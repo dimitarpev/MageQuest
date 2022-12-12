@@ -1,7 +1,7 @@
 package main;
 
 import java.awt.*;
-
+ //gej
 public class Game implements Runnable {
 
     private GameWindow gameWindow;
