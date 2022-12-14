@@ -1,5 +1,7 @@
 package main;
 
+import entities.Player;
+
 import java.awt.*;
  //gej
 public class Game implements Runnable {
@@ -9,8 +11,11 @@ public class Game implements Runnable {
     private Thread gameThread;
     private final int fpsSet = 120;
     private final int upsSet = 200;
+    private Player player;
+    private final static float SCALE = 2f;
 
     public Game() {
+        initClasses();
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
@@ -18,18 +23,22 @@ public class Game implements Runnable {
         startGameLoop();
     }
 
-    private void startGameLoop() {
+     private void initClasses() {
+        player = new Player(200, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
+     }
+
+     private void startGameLoop() {
         gameThread = new Thread(this);
         gameThread.start();
     }
 
     public void update() {
-
+        player.update();
     }
 
     //Render all entities
     public void render(Graphics g) {
-
+        player.render(g);
     }
 
     //GAME LOOP
@@ -72,4 +81,8 @@ public class Game implements Runnable {
         }
 
     }
-}
+
+     public Player getPlayer() {
+         return player;
+     }
+ }

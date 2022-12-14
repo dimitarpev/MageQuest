@@ -32,18 +32,11 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         game.render(g);
-        //test character
-        Graphics2D g2 =(Graphics2D) g;
-        g2.setColor(Color.BLUE);
-        g2.fillRect(getX(),getY(),50,50);
-
-
-
 
     }
 
 
-
-
-
+    public Game getGame() {
+        return game;
+    }
 }
