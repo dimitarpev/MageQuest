@@ -3,14 +3,20 @@ package main;
 import entities.Player;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
+import utilz.LoadSave;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class GamePanel extends JPanel {
 
     private Game game;
     private MouseInputs mouseInputs;
+    private BufferedImage img;
 
     public GamePanel(Game game) {
         mouseInputs = new MouseInputs(this);
@@ -19,6 +25,17 @@ public class GamePanel extends JPanel {
         addKeyListener(new KeyboardInputs(this));
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
+//        importImg();
+    }
+
+    private void importImg() {
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND_IMAGE);
+
+//        try{
+//            img = ImageIO.read(is);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
     }
 
     private void setPanelSize() {
@@ -33,7 +50,11 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         game.render(g);
 
+        //g.drawImage(img, 0, 0, null);
+        //g.drawImage(img, 0, 0, 1920, 696, null);
     }
+
+
 
 
     public Game getGame() {

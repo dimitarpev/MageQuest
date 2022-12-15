@@ -32,8 +32,8 @@ public class Player extends Entity{
 
         animations = new BufferedImage[5];
         for (int i = 0; i < 5; i++) {
-            //animations[i] = img.getSubimage(i*387, 0, 387, 350);
-            animations[i] = img.getSubimage(i*64, 0, 64, 58);
+            animations[i] = img.getSubimage(i*387, 0, 387, 350);
+            //animations[i] = img.getSubimage(i*64, 0, 64, 58);
         }
     }
 
