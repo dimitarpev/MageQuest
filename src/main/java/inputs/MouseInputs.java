@@ -1,5 +1,6 @@
 package inputs;
 
+import entities.Manaball;
 import main.GamePanel;
 
 import java.awt.event.MouseEvent;
@@ -16,7 +17,9 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if (e.getButton() == MouseEvent.BUTTON2) {
+            gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue(), gamePanel.getGame().getPlayer().getyValue(), 64, 64));
+        }
     }
 
     @Override

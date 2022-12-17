@@ -1,5 +1,6 @@
 package inputs;
 
+import entities.Manaball;
 import main.GamePanel;
 import entities.Entity;
 
@@ -14,7 +15,7 @@ public class KeyboardInputs implements KeyListener {
         this.gamePanel = gamePanel;
     }
 
-    public boolean upP, downP, leftP, rightP;
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -23,18 +24,15 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
-        int code = e.getKeyCode();
-        if (code ==KeyEvent.VK_W){upP=true;}
-        if (code ==KeyEvent.VK_S){downP=true;}
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_SPACE -> gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue(), gamePanel.getGame().getPlayer().getyValue(), 64, 64));
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
 
-        int code = e.getKeyCode();
-        if (code ==KeyEvent.VK_W){upP=false;}
-        if (code ==KeyEvent.VK_S){downP=false;}
+
     }
 
 }

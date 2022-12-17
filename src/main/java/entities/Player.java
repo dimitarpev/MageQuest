@@ -14,8 +14,10 @@ public class Player extends Entity{
 
 
     private BufferedImage[] animations;
-    private int aniTick, aniIndex, aniSpeed = 25;
-
+    BufferedImage imgs;
+    private int aniTick, aniIndex, aniSpeed = 35;
+    private float xValue = x;
+    private float yValue = y;
 
 
     public Player(float x, float y , int width, int height) {
@@ -30,11 +32,14 @@ public class Player extends Entity{
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.IDLE_PLAYER_ATLAS);
 
+
         animations = new BufferedImage[5];
         for (int i = 0; i < 5; i++) {
-            animations[i] = img.getSubimage(i*387, 0, 387, 350);
-            //animations[i] = img.getSubimage(i*64, 0, 64, 58);
+            //animations[i] = img.getSubimage(i*387, 0, 387, 350);
+            animations[i] = img.getSubimage(i*64, 0, 64, 58);
         }
+
+
     }
 
 
@@ -86,6 +91,14 @@ public class Player extends Entity{
                 aniIndex = 0;
             }
         }
+    }
+
+    public float getxValue() {
+        return xValue;
+    }
+
+    public float getyValue(){
+        return yValue;
     }
 
 

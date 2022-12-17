@@ -1,6 +1,7 @@
 package main;
 
 import entities.Background;
+import entities.Controller;
 import entities.Player;
 
 import java.awt.*;
@@ -14,6 +15,7 @@ public class Game implements Runnable {
     private final int upsSet = 200;
     private Player player;
     private Background background;
+    private Controller controller;
     private final static float SCALE = 2f;
 
     public Game() {
@@ -28,6 +30,7 @@ public class Game implements Runnable {
      private void initClasses() {
          background = new Background(0, 0, 696, 1920);
          player = new Player(200, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
+         controller = new Controller();
      }
 
      private void startGameLoop() {
@@ -37,12 +40,14 @@ public class Game implements Runnable {
 
     public void update() {
         player.update();
+        controller.update();
     }
 
     //Render all entities
     public void render(Graphics g) {
         background.render(g);
         player.render(g);
+        controller.render(g);
     }
 
     //GAME LOOP
@@ -92,4 +97,7 @@ public class Game implements Runnable {
      public Background getBackground() {
         return background;
      }
+     public Controller getController() {
+        return controller;
+    }
  }
