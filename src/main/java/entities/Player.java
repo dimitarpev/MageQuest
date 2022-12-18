@@ -84,10 +84,12 @@ public class Player extends Entity{
 
         if((up && !down) && y > 0){
             y -= playerSpeed;
+            yValue -= playerSpeed;
             moving = true;
         }
         else if ((!up && down) && y < 580) {
             y += playerSpeed;
+            yValue += playerSpeed;
             moving = true;
 
         }

@@ -9,14 +9,14 @@ public class Controller {
     Manaball tempManaball;
 
     public Controller() {
-        addManaball(new Manaball(200, 200, 128, 128));
+
     }
 
     public void update(){
         for (int i = 0; i < manaBalls.size(); i++) {
             tempManaball = manaBalls.get(i);
 
-            if (tempManaball.getX() > 1000){
+            if (tempManaball.getX() > 1920){
                 removeManaball(tempManaball);
             }
 

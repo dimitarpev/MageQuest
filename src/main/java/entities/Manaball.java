@@ -16,7 +16,7 @@ public class Manaball extends Entity{
     }
 
     private void assignImage() {
-        image = LoadSave.GetSpriteAtlas(LoadSave.MANABALL_1);
+        image = LoadSave.GetSpriteAtlas(LoadSave.MANABALL_2);
     }
 
     public void update() {
