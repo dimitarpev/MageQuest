@@ -5,7 +5,7 @@ import entities.Controller;
 import entities.Player;
 
 import java.awt.*;
- //gej
+
 public class Game implements Runnable {
 
     private GameWindow gameWindow;

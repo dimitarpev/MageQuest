@@ -4,6 +4,7 @@ import entities.Player;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 import utilz.LoadSave;
+import  utilz.Constants.Directions.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,11 +13,14 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class GamePanel extends JPanel {
+import static utilz.Constants.Directions.*;
 
+public class GamePanel extends JPanel {
     private Game game;
     private MouseInputs mouseInputs;
     private BufferedImage img;
+
+
 
     public GamePanel(Game game) {
         mouseInputs = new MouseInputs(this);
@@ -38,6 +42,8 @@ public class GamePanel extends JPanel {
 //        }
     }
 
+
+
     private void setPanelSize() {
         Dimension size = new Dimension(1920, 696);
         setMinimumSize(size);
@@ -49,6 +55,7 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         game.render(g);
+
 
         //g.drawImage(img, 0, 0, null);
         //g.drawImage(img, 0, 0, 1920, 696, null);
