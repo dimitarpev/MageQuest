@@ -22,8 +22,9 @@ public class Player extends Entity{
     private int aniTick, aniIndex, aniSpeed = 35;
     private float xValue = x;
     private float yValue = y;
-    private int playerDir = -1;
     private boolean moving = false;
+    private boolean up, down;
+    private float playerSpeed = 2.0f;
 
 
     public Player(float x, float y , int width, int height) {
@@ -75,39 +76,30 @@ public class Player extends Entity{
         g.drawImage(animations[aniIndex], (int)x, (int)y, width, height, null);
     }
 
-    public void setDirection(int direction){
-        this.playerDir = direction;
-        moving = true;
-    }
-    public void setMoving(boolean moving){
-        this.moving = moving;
-    }
+
 
     private void updatePos() {
-        if(moving)
-        {
-            switch (playerDir){
-                case LEFT:
-                    x -= 5;
-                    break;
-                case UP:
-                    y -= 5;
-                    break;
-                case RIGHT:
-                    x += 5;
-                    break;
-                case DOWN:
-                    y += 5;
-                    break;
-            }
+
+        moving = false;
+
+        if((up && !down) && y > 0){
+            y -= playerSpeed;
+            moving = true;
         }
+        else if ((!up && down) && y < 580) {
+            y += playerSpeed;
+            moving = true;
+
+        }
+
     }
 
     public void update() {
         //character movement with grid jumps
+        updatePos();
         updateAnimationTick();
         setAnimation();
-        updatePos();
+
 
 
     }
@@ -135,6 +127,23 @@ public class Player extends Entity{
         return yValue;
     }
 
+    public void resetDirBoolean(){
+        up = false;
+        down = false;
+    }
+    public boolean isUp(){
+        return up;
+    }
+    public void setUp(boolean up){
+        this.up = up;
+    }
+    public boolean isDown(){
+        return down;
+    }
+    public void setDown(boolean down){
+        this.down = down;
+    }
 
 }
+
 

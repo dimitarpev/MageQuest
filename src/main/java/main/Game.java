@@ -100,4 +100,8 @@ public class Game implements Runnable {
      public Controller getController() {
         return controller;
     }
- }
+
+    public void windowFocusLost() {
+        player.resetDirBoolean();
+    }
+}
