@@ -30,13 +30,8 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_SPACE -> gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue(), gamePanel.getGame().getPlayer().getyValue(), 64, 64));
-        }
-        switch(e.getKeyCode()){
-            case KeyEvent.VK_W:
-                gamePanel.getGame().getPlayer().setUp(true);
-            case KeyEvent.VK_S:
-                gamePanel.getGame().getPlayer().setDown(true);
-                break;
+            case KeyEvent.VK_W -> gamePanel.getGame().getPlayer().setUp(true);
+            case KeyEvent.VK_S -> gamePanel.getGame().getPlayer().setDown(true);
 
         }
     }
