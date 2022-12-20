@@ -16,7 +16,7 @@ public class Game implements Runnable {
     private Player player;
     private Background background;
     private Controller controller;
-    private final static float SCALE = 2f;
+    public final static float SCALE = 2f;
 
     public Game() {
         initClasses();

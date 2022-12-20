@@ -1,5 +1,6 @@
 package entities;
 
+import main.Game;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -9,10 +10,13 @@ public class Manaball extends Entity{
 
     BufferedImage image;
     int attackSpeed = 3;
+    private float xDrawOffset = 50 * Game.SCALE;
+    private float yDrawOffset = 53 * Game.SCALE;
 
     public Manaball(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
+        initHitbox(x + 50 , y + 53, 31, 22);
     }
 
     private void assignImage() {
@@ -21,10 +25,12 @@ public class Manaball extends Entity{
 
     public void update() {
         x += attackSpeed;
+        hitbox.x += attackSpeed;
     }
 
     public void render(Graphics g) {
-        g.drawImage(image, (int) x, (int) y, width, height, null);
+        g.drawImage(image, (int) x , (int) y, width, height, null);
+        drawHitbox(g);
     }
 
     public float getX() {
