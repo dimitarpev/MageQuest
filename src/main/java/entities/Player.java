@@ -1,6 +1,7 @@
 package entities;
 
 import inputs.KeyboardInputs;
+import main.Game;
 import main.GamePanel;
 import utilz.LoadSave;
 
@@ -25,15 +26,17 @@ public class Player extends Entity{
     private boolean moving = false;
     private boolean up, down;
     private float playerSpeed = 2.0f;
+    private float xDrawOffset = 24 * Game.SCALE;
+    private float yDrawOffset = 20 * Game.SCALE;
 
 
     public Player(float x, float y , int width, int height) {
 
         super(x, y, width, height);
         loadAnimations();
-
         setDefaultValues();
         getPlayerImage();
+        initHitbox(x, y, 45 * Game.SCALE, 65 * Game.SCALE);
     }
 
     private void loadAnimations() {
@@ -74,6 +77,7 @@ public class Player extends Entity{
 
     public void render(Graphics g) {
         g.drawImage(animations[aniIndex], (int)x, (int)y, width, height, null);
+        drawHitbox(g);
     }
 
 
@@ -85,11 +89,13 @@ public class Player extends Entity{
         if((up && !down) && y > 0){
             y -= playerSpeed;
             yValue -= playerSpeed;
+            hitbox.y -= playerSpeed;
             moving = true;
         }
         else if ((!up && down) && y < 580) {
             y += playerSpeed;
             yValue += playerSpeed;
+            hitbox.y += playerSpeed;
             moving = true;
 
         }
@@ -101,7 +107,6 @@ public class Player extends Entity{
         updatePos();
         updateAnimationTick();
         setAnimation();
-
 
 
     }
