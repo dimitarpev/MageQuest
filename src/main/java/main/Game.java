@@ -1,8 +1,6 @@
 package main;
 
-import entities.Background;
-import entities.Controller;
-import entities.Player;
+import entities.*;
 
 import java.awt.*;
 
@@ -16,6 +14,7 @@ public class Game implements Runnable {
     private Player player;
     private Background background;
     private Controller controller;
+    //private Square square;
     public final static float SCALE = 2f;
 
     public Game() {
@@ -31,6 +30,7 @@ public class Game implements Runnable {
          background = new Background(0, 0, 696, 1920);
          player = new Player(150, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
          controller = new Controller();
+         //square = new Square(600, 200);
      }
 
      private void startGameLoop() {
@@ -48,6 +48,7 @@ public class Game implements Runnable {
         background.render(g);
         player.render(g);
         controller.render(g);
+        //square.render(g);
     }
 
     //GAME LOOP

@@ -6,11 +6,14 @@ import java.util.LinkedList;
 public class Controller {
 
     private LinkedList<Manaball> manaBalls = new LinkedList<Manaball>();
+    private LinkedList<Bat> bats = new LinkedList<>();
     Manaball tempManaball;
+    Bat tempBat;
+
     int renderTick = 0;
 
     public Controller() {
-
+        addBat(new Bat(1200, 100, 64, 64));
     }
 
     public void update(){
@@ -23,6 +26,17 @@ public class Controller {
 
                 tempManaball.update();
             }
+        for (int i = 0; i < bats.size(); i++) {
+            tempBat = bats.get(i);
+            if (tempManaball != null) {
+                if (tempBat.getX() <= tempManaball.getX() + 50){
+                    removeBat(tempBat);
+                }
+            }
+
+
+            tempBat.update();
+        }
     }
 
     public void render(Graphics g) {
@@ -30,6 +44,12 @@ public class Controller {
             tempManaball = manaBalls.get(i);
 
             tempManaball.render(g);
+
+        }
+        for (int i = 0; i < bats.size(); i++) {
+            tempBat = bats.get(i);
+
+            tempBat.render(g);
 
         }
 //        renderTick++;
@@ -43,6 +63,12 @@ public class Controller {
     }
     public void removeManaball(Manaball ball) {
         manaBalls.remove(ball);
+    }
+    public void addBat(Bat bat) {
+        bats.add(bat);
+    }
+    public void removeBat(Bat bat) {
+        bats.remove(bat);
     }
 
 }

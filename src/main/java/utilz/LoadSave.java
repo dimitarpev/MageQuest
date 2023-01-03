@@ -14,6 +14,8 @@ public class LoadSave {
     public static final String MANABALL_1 = "Explosion_5/Explosion_1.png";
     public static final String MANABALL_2 = "Explosion_5/Explosion_2.png";
 
+    public static final String ENEMY_BAT = "enemies/bat.png";
+
     public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + fileName);
