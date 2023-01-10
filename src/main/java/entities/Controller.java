@@ -67,8 +67,6 @@ public class Controller {
     public void addBat(Bat bat) {
         bats.add(bat);
     }
-    public void removeBat(Bat bat) {
-        bats.remove(bat);
-    }
+    public void removeBat(Bat bat) {bats.remove(bat);}
 
 }

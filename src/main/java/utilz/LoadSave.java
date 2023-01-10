@@ -15,6 +15,15 @@ public class LoadSave {
     public static final String MANABALL_2 = "Explosion_5/Explosion_2.png";
 
     public static final String ENEMY_BAT = "enemies/bat.png";
+    public static final String ENEMY_BEE = "enemies/bee.png";
+    public static final String ENEMY_BLUE = "enemies/blue.png";
+    public static final String ENEMY_GREEN = "enemies/green.png";
+    public static final String ENEMY_GREY = "enemies/grey.png";
+    public static final String ENEMY_PINK = "enemies/pink.png";
+    public static final String ENEMY_RED = "enemies/red.png";
+    public static final String ENEMY_ROBOT = "enemies/robot.png";
+    public static final String ENEMY_YELLOW = "enemies/yellow.png";
+
 
     public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;
