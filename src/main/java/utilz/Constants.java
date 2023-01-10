@@ -15,6 +15,16 @@ public class Constants {
         public static final int UP = 0;
         public static final int DOWN = 1;
     }
+
+    public static class PlayerConstants {
+        public static final int IDLE = 0;
+        public static final int WALK = 1;
+        public static final int RUNNING = 2;
+        public static final int JUMP = 3;
+        public static final int ATTACK = 4;
+        public static final int HURT = 5;
+        public static final int DIE = 6;
+    }
     //directions, player constants....
 
 

@@ -12,15 +12,18 @@ import java.io.IOException;
 
 import static utilz.Constants.Directions.*;
 import static utilz.Constants.Directions.DOWN;
+import static utilz.Constants.PlayerConstants.*;
 
 
 public class Player extends Entity{
 
 
 
-    private BufferedImage[] animations;
+    private BufferedImage[][] animations;
     BufferedImage imgs;
-    private int aniTick, aniIndex, aniSpeed = 35;
+    private int aniTick, aniIndex, aniSpeed = 50;
+
+    private int playerAction = IDLE;
     private float xValue = x;
     private float yValue = y;
     private boolean moving = false;
@@ -36,17 +39,23 @@ public class Player extends Entity{
         loadAnimations();
         setDefaultValues();
         getPlayerImage();
-        initHitbox(x, y, 45 * Game.SCALE, 65 * Game.SCALE);
+        initHitbox(x, y + 10, 45 * Game.SCALE, 65 * Game.SCALE - 10);
     }
 
+
+
+
     private void loadAnimations() {
-        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.IDLE_PLAYER_ATLAS);
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
 
-        animations = new BufferedImage[5];
-        for (int i = 0; i < 5; i++) {
+        animations = new BufferedImage[7][5];
+        for (int j = 0; j < animations.length; j++) {
+            for (int i = 0; i < animations[j].length ; i++) {
+                animations[j][i] = img.getSubimage(i*140, j*128, 130, 128);
+            }
             //animations[i] = img.getSubimage(i*387, 0, 387, 350);
-            animations[i] = img.getSubimage(i*64, 0, 64, 58);
+//            animations[i][j] = img.getSubimage(i*64, 0, 64, 58);
         }
 
 
@@ -76,7 +85,7 @@ public class Player extends Entity{
     }
 
     public void render(Graphics g) {
-        g.drawImage(animations[aniIndex], (int)x, (int)y, width, height, null);
+        g.drawImage(animations[playerAction][aniIndex], (int)x, (int)y, width, height, null);
         drawHitbox(g);
     }
 
@@ -112,7 +121,21 @@ public class Player extends Entity{
     }
 
     private void setAnimation() {
-        //set animation if sprite is whole
+        int startAni = playerAction;
+
+        if (moving)
+            playerAction = IDLE;
+        else
+            playerAction = IDLE;
+
+        if (startAni != playerAction) {
+            resetAniTick();
+        }
+    }
+
+    private void resetAniTick() {
+        aniTick = 0;
+        aniIndex = 0;
     }
 
     private void updateAnimationTick() {
@@ -120,7 +143,7 @@ public class Player extends Entity{
         if (aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex++;
-            if (aniIndex >= 5) {
+            if (aniIndex >= 4) {
                 aniIndex = 0;
             }
         }
