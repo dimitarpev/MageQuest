@@ -28,6 +28,8 @@ public class Player extends Entity{
     private float yValue = y;
     private boolean moving = false;
     private boolean up, down;
+    public boolean CANSHOOT = true;
+    int ticker = 0;
     private float playerSpeed = 2.0f;
     private float xDrawOffset = 24 * Game.SCALE;
     private float yDrawOffset = 20 * Game.SCALE;
@@ -143,8 +145,21 @@ public class Player extends Entity{
         if (aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex++;
+//            if (!CANSHOOT) {
+//                aniIndex = 0;
+//            }
+            ticker++;
+            if (ticker == 2) {
+                CANSHOOT = true;
+                ticker = 0;
+            }
             if (aniIndex >= 4) {
                 aniIndex = 0;
+//                ticker++;
+//                if (ticker == 1) {
+//                    CANSHOOT = true;
+//                    ticker = 0;
+//                }
             }
         }
     }
@@ -172,6 +187,14 @@ public class Player extends Entity{
     }
     public void setDown(boolean down){
         this.down = down;
+    }
+
+    public boolean getCANSHOOT() {
+        return CANSHOOT;
+    }
+
+    public void setCANSHOOT(boolean canshoot) {
+        this.CANSHOOT = canshoot;
     }
 
 }

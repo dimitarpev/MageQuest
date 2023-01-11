@@ -14,6 +14,8 @@ public class Controller {
 
     public Controller() {
         addBat(new Bat(1200, 100, 64, 64));
+        addBat(new Bat(1200, 400, 64, 64));
+
     }
 
     public void update(){
@@ -29,7 +31,7 @@ public class Controller {
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
             if (tempManaball != null) {
-                if (tempBat.getX() <= tempManaball.getX() + 50){
+                if (tempBat.getX() <= tempManaball.getX() + 50 && isTouching()){
                     removeBat(tempBat);
                 }
             }
@@ -68,5 +70,13 @@ public class Controller {
         bats.add(bat);
     }
     public void removeBat(Bat bat) {bats.remove(bat);}
+
+    public boolean isTouching() {
+        if((int)tempBat.getY() == (int)tempManaball.getY()) {
+            return true;
+        } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
+            return true;
+        }else return false;
+    }
 
 }
