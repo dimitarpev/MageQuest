@@ -9,6 +9,7 @@ public class Bee extends Enemy {
 
     BufferedImage image;
 
+
     public Bee(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
