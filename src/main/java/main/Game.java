@@ -3,6 +3,7 @@ package main;
 import entities.*;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 public class Game implements Runnable {
 
@@ -14,6 +15,7 @@ public class Game implements Runnable {
     private Player player;
     private Background background;
     private Controller controller;
+    private Score score;
     //private Square square;
     public final static float SCALE = 2f;
 
@@ -30,7 +32,10 @@ public class Game implements Runnable {
          background = new Background(0, 0, 696, 1920);
          player = new Player(150, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
          controller = new Controller();
+         score = new Score();
          //square = new Square(600, 200);
+
+
      }
 
      private void startGameLoop() {
@@ -49,6 +54,13 @@ public class Game implements Runnable {
         player.render(g);
         controller.render(g);
         //square.render(g);
+        score.render(g);
+        //SCORE TEXT
+//        Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
+//        g.setFont(textFont);
+//        g.setColor(Color.CYAN);
+//        g.drawString("SCORE", 10, 30);
+
     }
 
     //GAME LOOP

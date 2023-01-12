@@ -1,5 +1,6 @@
 package entities;
 
+import main.Game;
 import utilz.LoadSave;
 
 import java.awt.*;

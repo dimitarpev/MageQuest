@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,9 +41,9 @@ public class Controller extends TimerTask {
                 int min = 0;
                 int max = 9;
                 int minXValue = 1200;
-                int maxXValue = 1800;
-                int minYValue = 0;
-                int maxYValue = 800;
+                int maxXValue = 1600;
+                int minYValue = 100;
+                int maxYValue = 700;
                 int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);
                 if (random_int == 0){
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
@@ -109,34 +110,316 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
-            if (tempManaball != null) {
-                if (tempBat.getX() <= tempManaball.getX() + 50 && isTouching("bat")) {
-                    removeBat(tempBat);
-                    removeManaball(tempManaball);
-                }
+
+            if (manaBalls != null && bats != null) {
+                checkEnemyHit(tempBat.getHitbox(), "bat");
             }
+
             tempBat.update();
         }
         for (int i = 0; i < bees.size(); i++) {
             tempBee = bees.get(i);
-            if (tempManaball != null) {
-                if (tempBee.getX() <= tempManaball.getX() + 50 && isTouching("bees")) {
-                    removeBee(tempBee);
-                    removeManaball(tempManaball);
-                }
+
+            if (manaBalls != null && bees != null) {
+                checkBeeHit(tempBee.getHitbox(), "bee");
             }
+
             tempBee.update();
         }
         for (int i = 0; i < blues.size(); i++) {
             tempBlue = blues.get(i);
-            if (tempManaball != null) {
-                if (tempBlue.getX() <= tempManaball.getX() + 50 && isTouching("blue")) {
-                    removeBlue(tempBlue);
-                    removeManaball(tempManaball);
-                }
+
+            if (manaBalls != null && blues != null) {
+                checkBlueHit(tempBlue.getHitbox(), "blue");
             }
+
             tempBlue.update();
         }
+        for (int i = 0; i < greens.size(); i++) {
+            tempGreen = greens.get(i);
+
+            if (manaBalls != null && greens != null) {
+                checkGreenHit(tempGreen.getHitbox(), "green");
+            }
+
+            tempGreen.update();
+        }
+        for (int i = 0; i < greys.size(); i++) {
+            tempGrey = greys.get(i);
+
+            if (manaBalls != null && greys != null) {
+                checkGreyHit(tempGrey.getHitbox(), "grey");
+            }
+
+            tempGrey.update();
+        }
+        for (int i = 0; i < oranges.size(); i++) {
+            tempOrange = oranges.get(i);
+
+            if (manaBalls != null && oranges != null) {
+                checkOrangeHit(tempOrange.getHitbox(), "orange");
+            }
+
+            tempOrange.update();
+        }
+        for (int i = 0; i < pinks.size(); i++) {
+            tempPink = pinks.get(i);
+
+            if (manaBalls != null && pinks != null) {
+                checkPinkHit(tempPink.getHitbox(), "pink");
+            }
+
+            tempPink.update();
+        }
+        for (int i = 0; i < reds.size(); i++) {
+            tempRed = reds.get(i);
+
+            if (manaBalls != null && reds != null) {
+                checkRedHit(tempRed.getHitbox(), "red");
+            }
+
+            tempRed.update();
+        }
+        for (int i = 0; i < robots.size(); i++) {
+            tempRobot = robots.get(i);
+
+            if (manaBalls != null && robots != null) {
+                checkRobotHit(tempRobot.getHitbox(), "robot");
+            }
+
+            tempRobot.update();
+        }
+        for (int i = 0; i < yellows.size(); i++) {
+            tempYellow = yellows.get(i);
+
+            if (manaBalls != null && yellows != null) {
+                checkYellowHit(tempYellow.getHitbox(), "yellow");
+            }
+
+            tempYellow.update();
+        }
+    }
+
+    public void checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Bee b : bees)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        bees.remove(b);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkBlueHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Blue b : blues)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        blues.remove(b);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkGreenHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Green g : greens)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        greens.remove(g);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkGreyHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Grey g : greys)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        greys.remove(g);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkOrangeHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Orange o : oranges)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        oranges.remove(o);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkPinkHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Pink p : pinks)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        pinks.remove(p);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkRedHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Red r : reds)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        reds.remove(r);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkRobotHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Robot r : robots)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        robots.remove(r);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkYellowHit(Rectangle2D.Float hitbox, String enemyType) {
+        for (Yellow y : yellows)
+            for(Manaball mb : manaBalls)
+                if (mb != null) {
+
+                    if (hitbox.intersects(mb.getHitbox())) {
+                        yellows.remove(y);
+                        manaBalls.remove(mb);
+                        return;
+                    }
+                }
+    }
+    public void checkEnemyHit(Rectangle2D.Float hitbox, String enemyType) {
+        if (enemyType.equals("bat")){
+            for (Bat b : bats)
+                for(Manaball mb : manaBalls)
+                    if (mb != null) {
+
+                        if (hitbox.intersects(mb.getHitbox())) {
+                            bats.remove(b);
+                            manaBalls.remove(mb);
+                            return;
+                        }
+                    }}
+//        if (enemyType.equals("bee")){
+//            for (Bee b : bees)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            bees.remove(b);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("blue")){
+//            for (Blue b : blues)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            blues.remove(b);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("green")){
+//            for (Green g : greens)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            greens.remove(g);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("grey")){
+//            for (Grey g : greys)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            greys.remove(g);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("orange")){
+//            for (Orange o : oranges)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            oranges.remove(o);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("pink")){
+//            for (Pink p : pinks)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            pinks.remove(p);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("red")){
+//            for (Red r : reds)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            reds.remove(r);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("robot")){
+//            for (Robot r : robots)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            robots.remove(r);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+//        if (enemyType.equals("yellow")){
+//            for (Yellow y : yellows)
+//                for(Manaball mb : manaBalls)
+//                    if (mb != null) {
+//
+//                        if (hitbox.intersects(mb.getHitbox())) {
+//                            yellows.remove(y);
+//                            manaBalls.remove(mb);
+//                            return;
+//                        }
+//                    }}
+
     }
 
     public void render(Graphics g) {

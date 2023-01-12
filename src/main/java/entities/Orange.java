@@ -17,7 +17,7 @@ public class Orange extends Enemy {
     }
 
     private void assignImage() {
-        image = LoadSave.GetSpriteAtlas(LoadSave.ENEMY_BEE);
+        image = LoadSave.GetSpriteAtlas(LoadSave.ENEMY_ORANGE);
     }
 
 
