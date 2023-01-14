@@ -120,7 +120,7 @@ public class Controller extends TimerTask {
         for (int i = 0; i < bees.size(); i++) {
             tempBee = bees.get(i);
 
-            if (manaBalls != null && bees != null) {
+            if (manaBalls != null && bees != null && checkBeeHit(tempBee.getHitbox(), "bee") ) {
                 checkBeeHit(tempBee.getHitbox(), "bee");
             }
 
@@ -200,123 +200,134 @@ public class Controller extends TimerTask {
         }
     }
 
-    public void checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Bee b : bees)
-            for(Manaball mb : manaBalls)
+    public boolean checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
+        for(Manaball mb : manaBalls)
+            for (Bee b : bees)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (b.hitbox.intersects(mb.getHitbox())) {
                         bees.remove(b);
                         manaBalls.remove(mb);
-                        return;
+                        Score.currentScore += 20;
+                        return true;
                     }
                 }
+        return false;
     }
     public void checkBlueHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Blue b : blues)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Blue b : blues)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (b.hitbox.intersects(mb.getHitbox())) {
                         blues.remove(b);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkGreenHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Green g : greens)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Green g : greens)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (g.hitbox.intersects(mb.getHitbox())) {
                         greens.remove(g);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkGreyHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Grey g : greys)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Grey g : greys)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (g.hitbox.intersects(mb.getHitbox())) {
                         greys.remove(g);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkOrangeHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Orange o : oranges)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Orange o : oranges)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (o.hitbox.intersects(mb.getHitbox())) {
                         oranges.remove(o);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkPinkHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Pink p : pinks)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Pink p : pinks)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (p.hitbox.intersects(mb.getHitbox())) {
                         pinks.remove(p);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkRedHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Red r : reds)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Red r : reds)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (r.hitbox.intersects(mb.getHitbox())) {
                         reds.remove(r);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkRobotHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Robot r : robots)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Robot r : robots)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (r.hitbox.intersects(mb.getHitbox())) {
                         robots.remove(r);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkYellowHit(Rectangle2D.Float hitbox, String enemyType) {
-        for (Yellow y : yellows)
-            for(Manaball mb : manaBalls)
+        for(Manaball mb : manaBalls)
+            for (Yellow y : yellows)
                 if (mb != null) {
 
-                    if (hitbox.intersects(mb.getHitbox())) {
+                    if (y.hitbox.intersects(mb.getHitbox())) {
                         yellows.remove(y);
                         manaBalls.remove(mb);
+                        Score.currentScore += 20;
                         return;
                     }
                 }
     }
     public void checkEnemyHit(Rectangle2D.Float hitbox, String enemyType) {
         if (enemyType.equals("bat")){
-            for (Bat b : bats)
-                for(Manaball mb : manaBalls)
+            for(Manaball mb : manaBalls)
+                for (Bat b : bats)
                     if (mb != null) {
 
-                        if (hitbox.intersects(mb.getHitbox())) {
+                        if (b.hitbox.intersects(mb.getHitbox())) {
                             bats.remove(b);
                             manaBalls.remove(mb);
+                            Score.currentScore += 20;
                             return;
                         }
                     }}
