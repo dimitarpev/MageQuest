@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Controller extends TimerTask {
 
     private LinkedList<Manaball> manaBalls = new LinkedList<Manaball>();
@@ -19,6 +20,7 @@ public class Controller extends TimerTask {
     private LinkedList<Red> reds = new LinkedList<>();
     private LinkedList<Robot> robots = new LinkedList<>();
     private LinkedList<Yellow> yellows = new LinkedList<>();
+
     Manaball tempManaball;
     Bat tempBat;
     Bee tempBee;
@@ -36,14 +38,24 @@ public class Controller extends TimerTask {
 
     public Controller() {
         TimerTask repeatedTask = new TimerTask() {
-            int yValue = 0;
             public void run() {
                 int min = 0;
-                int max = 9;
+                int max = 0;
+                if (Score.currentScore == 0){
+                    max = 0;
+                } else if (Score.currentScore < 200) {
+                    max = 2;
+                } else if (Score.currentScore > 200 && Score.currentScore < 1000) {
+                    max = 5;
+                } else if (Score.currentScore > 1000 && Score.currentScore < 5000) {
+                    max = 8;
+                } else if (Score.currentScore > 5000) {
+                    max = 9;
+                }
                 int minXValue = 1200;
-                int maxXValue = 1600;
+                int maxXValue = 1550;
                 int minYValue = 100;
-                int maxYValue = 700;
+                int maxYValue = 600;
                 int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);
                 if (random_int == 0){
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
@@ -89,13 +101,36 @@ public class Controller extends TimerTask {
 
         };
         Timer timer = new Timer("Timer");
-
-        long delay = 1500L;
-        long period = 1500L;
-        timer.scheduleAtFixedRate(repeatedTask, delay, period);
-
-
+        if(Score.currentScore < 200){
+            long min = 1000L;
+            long max = 3000L;
+            long delay = min + (long) (Math.random() * (max - min));
+            long period = min + (long) (Math.random() * (max - min));
+            timer.scheduleAtFixedRate(repeatedTask, delay, period);}
+        if(Score.currentScore < 200 && Score.currentScore > 400){
+            long min = 1000L;
+            long max = 3000L;
+            long delay = min + (long) (Math.random() * (max - min));
+            long period = min + (long) (Math.random() * (max - min));
+            timer.scheduleAtFixedRate(repeatedTask, delay, period);}
+        if(Score.currentScore < 400 && Score.currentScore > 600){
+            long min = 1000L;
+            long max = 3000L;
+            long delay = min + (long) (Math.random() * (max - min));
+            long period = min + (long) (Math.random() * (max - min));
+            timer.scheduleAtFixedRate(repeatedTask, delay, period);}
+        if(Score.currentScore < 600 && Score.currentScore > 800){
+            long min = 1000L;
+            long max = 3000L;
+            long delay = min + (long) (Math.random() * (max - min));
+            long period = min + (long) (Math.random() * (max - min));
+            timer.scheduleAtFixedRate(repeatedTask, delay, period);}
     }
+
+
+
+
+
 
     @Override
     public void run() {}

@@ -21,6 +21,7 @@ public class Score {
     public void update() {
 
     }
+    public int getScore(){return currentScore;}
 
     public int getCurrentScore() {
         return currentScore;
