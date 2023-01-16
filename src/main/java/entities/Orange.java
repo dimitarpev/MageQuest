@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 public class Orange extends Enemy {
 
     BufferedImage image;
-
+    float speed = 1.0f;
     public Orange(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
@@ -28,9 +28,12 @@ public class Orange extends Enemy {
 
     @Override
     public void update() {
+        x -= speed;
+        hitbox.x -= speed;
     }
 
     public float getX() {
         return x;
     }
+
 }

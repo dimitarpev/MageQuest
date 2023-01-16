@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class Robot extends Enemy{
     BufferedImage image;
-
+    float speed = 0.5f;
     public Robot(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
@@ -26,7 +26,11 @@ public class Robot extends Enemy{
     }
 
     @Override
-    public void update() {}
+    public void update() {
+        x -= speed;
+        hitbox.x -= speed;
+    }
 
     public float getX() {return x;}
+
 }

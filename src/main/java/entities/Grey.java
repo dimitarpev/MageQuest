@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class Grey extends Enemy{
     BufferedImage image;
-
+    float speed = 1.2f;
     public Grey(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
@@ -26,7 +26,11 @@ public class Grey extends Enemy{
     }
 
     @Override
-    public void update() {}
+    public void update() {
+        x -= speed;
+        hitbox.x -= speed;
+    }
 
     public float getX() {return x;}
+
 }

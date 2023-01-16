@@ -52,8 +52,8 @@ public class Controller extends TimerTask {
                 } else if (Score.currentScore > 5000) {
                     max = 9;
                 }
-                int minXValue = 1200;
-                int maxXValue = 1550;
+                int minXValue = 1600;
+                int maxXValue = 1600;
                 int minYValue = 100;
                 int maxYValue = 600;
                 int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);

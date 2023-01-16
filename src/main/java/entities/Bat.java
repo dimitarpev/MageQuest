@@ -10,6 +10,7 @@ public class Bat extends Enemy{
 
 
     BufferedImage image;
+    float speed = 1.0f;
 
     public Bat(float x, float y, int height, int width) {
         super(x, y, height, width);
@@ -24,8 +25,8 @@ public class Bat extends Enemy{
     }
 
     public void update() {
-        x -= 1;
-        hitbox.x -= 1;
+        x -= speed;
+        hitbox.x -= speed;
     }
 
     public void render(Graphics g) {
@@ -40,4 +41,6 @@ public class Bat extends Enemy{
     public float getY() {
         return y;
     }
+
+
 }

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 public class Bee extends Enemy {
 
     BufferedImage image;
+    float speed = 1.2f;
 
 
     public Bee(float x, float y, int height, int width) {
@@ -28,7 +29,10 @@ public class Bee extends Enemy {
     }
 
     @Override
-    public void update() {}
+    public void update() {
+        x -= speed;
+        hitbox.x -= speed;
+    }
 
     public float getX() {
         return x;
