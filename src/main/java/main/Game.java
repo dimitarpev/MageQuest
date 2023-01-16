@@ -57,7 +57,7 @@ public class Game implements Runnable {
         controller.render(g);
         //square.render(g);
         score.render(g);
-        heart.render(g);
+//        heart.render(g);
         //SCORE TEXT
 //        Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
 //        g.setFont(textFont);

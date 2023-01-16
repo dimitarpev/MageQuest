@@ -593,10 +593,10 @@ public class Controller extends TimerTask {
             tempYellow = yellows.get(i);
             tempYellow.render(g);
         }
-        for (int i = 0; i < hearts.size(); i++) {
-            tempHeart = hearts.get(i);
-            tempHeart.render(g);
-        }
+//        for (int i = 0; i < hearts.size(); i++) {
+//            tempHeart = hearts.get(i);
+//            tempHeart.render(g);
+//        }
 
 
 //        renderTick++;
