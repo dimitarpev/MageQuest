@@ -21,6 +21,7 @@ public class Controller extends TimerTask {
     private LinkedList<Red> reds = new LinkedList<>();
     private LinkedList<Robot> robots = new LinkedList<>();
     private LinkedList<Yellow> yellows = new LinkedList<>();
+    private LinkedList<Heart> hearts = new LinkedList<>();
 
     Manaball tempManaball;
     Spikeball tempSpikeball;
@@ -34,11 +35,15 @@ public class Controller extends TimerTask {
     Red tempRed;
     Robot tempRobot;
     Yellow tempYellow;
+    Heart tempHeart;
 
 //    private int lastSpawnedEnemy = java.time.Instant;
     int renderTick = 0;
 
     public Controller() {
+//        for(int i=0; i<3;i++){
+//            addHeart(new Heart(150 + 32 * i,50,32,32));
+//        }
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 int min = 0;
@@ -59,23 +64,23 @@ public class Controller extends TimerTask {
                 int minYValue = 100;
                 int maxYValue = 600;
                 int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);
-                if (random_int == 0){
+                if (random_int == 3){
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addBat(new Bat(randomX, randomY, 64, 64));}
-                else if (random_int == 1) {
+                else if (random_int == 0) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addBee(new Bee(randomX, randomY, 64, 64));}
-                else if (random_int == 2) {
+                else if (random_int == 4) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addBlue(new Blue(randomX, randomY, 64, 64));}
-                else if (random_int == 3) {
+                else if (random_int == 6) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addGreen(new Green(randomX, randomY, 64, 64));}
-                else if (random_int == 4) {
+                else if (random_int == 1) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addGrey(new Grey(randomX, randomY, 64, 64));}
@@ -83,7 +88,7 @@ public class Controller extends TimerTask {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addOrange(new Orange(randomX, randomY, 64, 64));}
-                else if (random_int == 6) {
+                else if (random_int == 2) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addPink(new Pink(randomX, randomY, 64, 64));}
@@ -91,11 +96,11 @@ public class Controller extends TimerTask {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addRed(new Red(randomX, randomY, 64, 64));}
-                else if (random_int == 8) {
+                else if (random_int == 9) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addRobot(new Robot(randomX, randomY, 64, 64));}
-                else if (random_int == 9) {
+                else if (random_int == 8) {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addYellow(new Yellow(randomX, randomY, 64, 64));}
@@ -588,6 +593,11 @@ public class Controller extends TimerTask {
             tempYellow = yellows.get(i);
             tempYellow.render(g);
         }
+        for (int i = 0; i < hearts.size(); i++) {
+            tempHeart = hearts.get(i);
+            tempHeart.render(g);
+        }
+
 
 //        renderTick++;
 //        if (renderTick == 100) {
@@ -631,7 +641,8 @@ public class Controller extends TimerTask {
     public void removeRobot(Robot robot) {robots.remove(robot);}
     public void addYellow(Yellow yellow) {yellows.add(yellow);}
     public void removeYellow(Yellow yellow) {yellows.remove(yellow);}
-
+    public void addHeart(Heart heart){ hearts.add(heart);}
+    public void removeHeart(Heart heart){ hearts.remove(heart);}
 
     public boolean isTouching(String enemy) {
         if (enemy.equals("bat")) {

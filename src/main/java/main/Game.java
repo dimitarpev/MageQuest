@@ -16,6 +16,7 @@ public class Game implements Runnable {
     private Background background;
     private Controller controller;
     private Score score;
+    private Heart heart;
 
     public final static float SCALE = 2f;
 
@@ -33,6 +34,7 @@ public class Game implements Runnable {
          player = new Player(150, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
          controller = new Controller();
          score = new Score();
+
          //square = new Square(600, 200);
 
 
@@ -55,6 +57,7 @@ public class Game implements Runnable {
         controller.render(g);
         //square.render(g);
         score.render(g);
+        heart.render(g);
         //SCORE TEXT
 //        Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
 //        g.setFont(textFont);

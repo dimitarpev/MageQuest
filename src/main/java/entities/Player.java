@@ -22,7 +22,7 @@ public class Player extends Entity{
     private BufferedImage[][] animations;
     BufferedImage imgs;
     private int aniTick, aniIndex, aniSpeed = 50;
-
+    private int livesOfPlayer = 3;
     private int playerAction = IDLE;
     private float xValue = x;
     private float yValue = y;
