@@ -10,6 +10,7 @@ import java.util.TimerTask;
 public class Controller extends TimerTask {
 
     private LinkedList<Manaball> manaBalls = new LinkedList<Manaball>();
+    private LinkedList<Spikeball> spikeballs = new LinkedList<>();
     private LinkedList<Bat> bats = new LinkedList<>();
     private LinkedList<Bee> bees = new LinkedList<>();
     private LinkedList<Blue> blues = new LinkedList<>();
@@ -22,6 +23,7 @@ public class Controller extends TimerTask {
     private LinkedList<Yellow> yellows = new LinkedList<>();
 
     Manaball tempManaball;
+    Spikeball tempSpikeball;
     Bat tempBat;
     Bee tempBee;
     Blue tempBlue;
@@ -143,17 +145,40 @@ public class Controller extends TimerTask {
             }
             tempManaball.update();
         }
+        for (int i = 0; i < spikeballs.size(); i++) {
+            tempSpikeball = spikeballs.get(i);
+            if (tempSpikeball.getX() == 0) {
+                removeSpikeball(tempSpikeball);
+            }
+            tempSpikeball.update();
+        }
+
+
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
 
+            if (tempBat.getX() == 0) {
+                removeBat(tempBat);
+            }
             if (manaBalls != null && bats != null) {
                 checkEnemyHit(tempBat.getHitbox(), "bat");
             }
+
+//          SEE HOW ENEMY SHOOTING WORKS /TEST CODE/
+//            int maxXShootValue = 50000;
+//            int minXShootValue = 0;
+//            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxXShootValue - minXShootValue + 1) + minXShootValue);
+//            if (randomIfWillShoot < 20) {
+//                addSpikeball(new Spikeball(tempBat.getX(), tempBat.getY(), 48, 48));
+//            }
 
             tempBat.update();
         }
         for (int i = 0; i < bees.size(); i++) {
             tempBee = bees.get(i);
+            if (tempBee.getX() == 0) {
+                removeBee(tempBee);
+            }
 
             if (manaBalls != null && bees != null && checkBeeHit(tempBee.getHitbox(), "bee") ) {
                 checkBeeHit(tempBee.getHitbox(), "bee");
@@ -163,7 +188,9 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < blues.size(); i++) {
             tempBlue = blues.get(i);
-
+            if (tempBlue.getX() == 0) {
+                removeBlue(tempBlue);
+            }
             if (manaBalls != null && blues != null) {
                 checkBlueHit(tempBlue.getHitbox(), "blue");
             }
@@ -172,16 +199,26 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < greens.size(); i++) {
             tempGreen = greens.get(i);
-
+            if (tempGreen.getX() == 0) {
+                removeGreen(tempGreen);
+            }
             if (manaBalls != null && greens != null) {
                 checkGreenHit(tempGreen.getHitbox(), "green");
+            }
+            int maxGreenShootValue = 50000;
+            int minGreenShootValue = 0;
+            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxGreenShootValue - minGreenShootValue + 1) + minGreenShootValue);
+            if (randomIfWillShoot < 20) {
+                addSpikeball(new Spikeball(tempGreen.getX(), tempGreen.getY(), 48, 48));
             }
 
             tempGreen.update();
         }
         for (int i = 0; i < greys.size(); i++) {
             tempGrey = greys.get(i);
-
+            if (tempGrey.getX() == 0) {
+                removeGrey(tempGrey);
+            }
             if (manaBalls != null && greys != null) {
                 checkGreyHit(tempGrey.getHitbox(), "grey");
             }
@@ -190,7 +227,9 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < oranges.size(); i++) {
             tempOrange = oranges.get(i);
-
+            if (tempOrange.getX() == 0) {
+                removeOrange(tempOrange);
+            }
             if (manaBalls != null && oranges != null) {
                 checkOrangeHit(tempOrange.getHitbox(), "orange");
             }
@@ -199,7 +238,9 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < pinks.size(); i++) {
             tempPink = pinks.get(i);
-
+            if (tempPink.getX() == 0) {
+                removePink(tempPink);
+            }
             if (manaBalls != null && pinks != null) {
                 checkPinkHit(tempPink.getHitbox(), "pink");
             }
@@ -208,27 +249,54 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < reds.size(); i++) {
             tempRed = reds.get(i);
-
+            if (tempRed.getX() == 0) {
+                removeRed(tempRed);
+            }
             if (manaBalls != null && reds != null) {
                 checkRedHit(tempRed.getHitbox(), "red");
+            }
+            int maxRedShootValue = 50000;
+            int minRedShootValue = 0;
+            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxRedShootValue - minRedShootValue + 1) + minRedShootValue);
+            if (randomIfWillShoot < 20) {
+                addSpikeball(new Spikeball(tempRed.getX(), tempRed.getY(), 48, 48));
             }
 
             tempRed.update();
         }
         for (int i = 0; i < robots.size(); i++) {
             tempRobot = robots.get(i);
-
+            if (tempRobot.getX() == 0) {
+                removeRobot(tempRobot);
+            }
             if (manaBalls != null && robots != null) {
                 checkRobotHit(tempRobot.getHitbox(), "robot");
             }
+
+            int maxXShootValue = 50000;
+            int minXShootValue = 0;
+            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxXShootValue - minXShootValue + 1) + minXShootValue);
+            if (randomIfWillShoot < 20) {
+                addSpikeball(new Spikeball(tempRobot.getX(), tempRobot.getY(), 48, 48));
+            }
+
 
             tempRobot.update();
         }
         for (int i = 0; i < yellows.size(); i++) {
             tempYellow = yellows.get(i);
-
+            if (tempYellow.getX() == 0) {
+                removeYellow(tempYellow);
+            }
             if (manaBalls != null && yellows != null) {
                 checkYellowHit(tempYellow.getHitbox(), "yellow");
+            }
+
+            int maxXShootValue = 50000;
+            int minXShootValue = 0;
+            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxXShootValue - minXShootValue + 1) + minXShootValue);
+            if (randomIfWillShoot < 20) {
+                addSpikeball(new Spikeball(tempYellow.getX(), tempYellow.getY(), 48, 48));
             }
 
             tempYellow.update();
@@ -243,7 +311,7 @@ public class Controller extends TimerTask {
                     if (b.hitbox.intersects(mb.getHitbox())) {
                         bees.remove(b);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 10;
                         return true;
                     }
                 }
@@ -270,7 +338,7 @@ public class Controller extends TimerTask {
                     if (g.hitbox.intersects(mb.getHitbox())) {
                         greens.remove(g);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 30;
                         return;
                     }
                 }
@@ -283,7 +351,7 @@ public class Controller extends TimerTask {
                     if (g.hitbox.intersects(mb.getHitbox())) {
                         greys.remove(g);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 10;
                         return;
                     }
                 }
@@ -309,7 +377,7 @@ public class Controller extends TimerTask {
                     if (p.hitbox.intersects(mb.getHitbox())) {
                         pinks.remove(p);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 10;
                         return;
                     }
                 }
@@ -322,7 +390,7 @@ public class Controller extends TimerTask {
                     if (r.hitbox.intersects(mb.getHitbox())) {
                         reds.remove(r);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 30;
                         return;
                     }
                 }
@@ -335,7 +403,7 @@ public class Controller extends TimerTask {
                     if (r.hitbox.intersects(mb.getHitbox())) {
                         robots.remove(r);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 40;
                         return;
                     }
                 }
@@ -348,7 +416,7 @@ public class Controller extends TimerTask {
                     if (y.hitbox.intersects(mb.getHitbox())) {
                         yellows.remove(y);
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        Score.currentScore += 30;
                         return;
                     }
                 }
@@ -473,6 +541,13 @@ public class Controller extends TimerTask {
             tempManaball = manaBalls.get(i);
             tempManaball.render(g);
         }
+        for (int i = 0; i < spikeballs.size(); i++) {
+            tempSpikeball = spikeballs.get(i);
+            tempSpikeball.render(g);
+        }
+
+
+
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
             tempBat.render(g);
@@ -526,6 +601,13 @@ public class Controller extends TimerTask {
     public void removeManaball(Manaball ball) {
         manaBalls.remove(ball);
     }
+    public void addSpikeball(Spikeball ball) {
+        spikeballs.add(ball);
+    }
+    public void removeSpikeball(Spikeball ball) {
+        spikeballs.remove(ball);
+    }
+
 
 
     // ADDING AND REMOVING THE DIFFERENT ENEMIES
