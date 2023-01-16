@@ -107,19 +107,19 @@ public class Controller extends TimerTask {
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore < 200 && Score.currentScore > 400){
+        if(Score.currentScore > 200 && Score.currentScore < 1000){
             long min = 1000L;
             long max = 3000L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore < 400 && Score.currentScore > 600){
+        if(Score.currentScore > 1000 && Score.currentScore < 5000){
             long min = 1000L;
             long max = 3000L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore < 600 && Score.currentScore > 800){
+        if(Score.currentScore > 5000){
             long min = 1000L;
             long max = 3000L;
             long delay = min + (long) (Math.random() * (max - min));
