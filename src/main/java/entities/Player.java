@@ -23,7 +23,7 @@ public class Player extends Entity{
     BufferedImage imgs;
     private int aniTick, aniIndex, aniSpeed = 50;
 
-    private int livesOfPlayer = 3;
+    public int livesOfPlayer = 3;
     private int playerAction = IDLE;
     private float xValue = x;
     private float yValue = y;
@@ -178,6 +178,10 @@ public class Player extends Entity{
         down = false;
     }
     public int getLivesOfPlayer(){ return livesOfPlayer;}
+
+    public void setLivesOfPlayer(int livesOfPlayer) {
+        this.livesOfPlayer = livesOfPlayer;
+    }
     public boolean isUp(){
         return up;
     }

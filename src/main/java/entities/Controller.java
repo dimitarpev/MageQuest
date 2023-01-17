@@ -1,5 +1,6 @@
 package entities;
 
+import javax.swing.text.TabStop;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
@@ -37,13 +38,18 @@ public class Controller extends TimerTask {
     Yellow tempYellow;
     Heart tempHeart;
 
-//    private int lastSpawnedEnemy = java.time.Instant;
-    int renderTick = 0;
+    Player player;
 
-    public Controller() {
-        for(int i=0; i<3;i++){
+
+    public Controller(Player player) {
+        this.player = player;
+
+        //Draw Player Hearts
+        for(int i=0; i < player.livesOfPlayer;i++){
             addHeart(new Heart(3 + 32 * i,50,32,32));
         }
+
+        //Enemy Spawning System
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 int min = 0;
@@ -132,17 +138,20 @@ public class Controller extends TimerTask {
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
+
+
     }
-
-
-
-
-
 
     @Override
     public void run() {}
 
     public void update() {
+        for (int i = 0; i < hearts.size(); i++) {
+            tempHeart = hearts.get(i);
+
+
+            tempHeart.update();
+        }
         for (int i = 0; i < manaBalls.size(); i++) {
             tempManaball = manaBalls.get(i);
             if (tempManaball.getX() > 1920) {
@@ -155,32 +164,38 @@ public class Controller extends TimerTask {
             if (tempSpikeball.getX() == 0) {
                 removeSpikeball(tempSpikeball);
             }
+
+            //DECREASE LIFE IF SPIKEBALL HITS PLAYER
+            if (spikeballs != null && player.livesOfPlayer > 0) {
+                if (tempSpikeball.hitbox.intersects(player.getHitbox())) {
+                    player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                    removeHeart(hearts.get(player.getLivesOfPlayer()));
+                    spikeballs.remove(tempSpikeball);
+                    return;
+                }
+
+
+            }
+
             tempSpikeball.update();
         }
 
+        //ENEMIES
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
 
-            if (tempBat.getX() == 0) {
+            if (tempBat.getX() <= 0) {
                 removeBat(tempBat);
             }
             if (manaBalls != null && bats != null) {
-                checkEnemyHit(tempBat.getHitbox(), "bat");
+                checkBatHit(tempBat.getHitbox(), "bat");
             }
-
-//          SEE HOW ENEMY SHOOTING WORKS /TEST CODE/
-//            int maxXShootValue = 50000;
-//            int minXShootValue = 0;
-//            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxXShootValue - minXShootValue + 1) + minXShootValue);
-//            if (randomIfWillShoot < 20) {
-//                addSpikeball(new Spikeball(tempBat.getX(), tempBat.getY(), 48, 48));
-//            }
 
             tempBat.update();
         }
         for (int i = 0; i < bees.size(); i++) {
             tempBee = bees.get(i);
-            if (tempBee.getX() == 0) {
+            if (tempBee.getX() <= 0) {
                 removeBee(tempBee);
             }
 
@@ -188,11 +203,19 @@ public class Controller extends TimerTask {
                 checkBeeHit(tempBee.getHitbox(), "bee");
             }
 
+            //SEE HOW ENEMY SHOOTING WORKS /TEST CODE/
+//            int maxXShootValue = 50000;
+//            int minXShootValue = 0;
+//            int randomIfWillShoot = (int)Math.floor(Math.random() * (maxXShootValue - minXShootValue + 1) + minXShootValue);
+//            if (randomIfWillShoot < 20) {
+//                addSpikeball(new Spikeball(tempBee.getX(), tempBee.getY(), 48, 48));
+//            }
+
             tempBee.update();
         }
         for (int i = 0; i < blues.size(); i++) {
             tempBlue = blues.get(i);
-            if (tempBlue.getX() == 0) {
+            if (tempBlue.getX() <= 0) {
                 removeBlue(tempBlue);
             }
             if (manaBalls != null && blues != null) {
@@ -203,7 +226,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < greens.size(); i++) {
             tempGreen = greens.get(i);
-            if (tempGreen.getX() == 0) {
+            if (tempGreen.getX() <= 0) {
                 removeGreen(tempGreen);
             }
             if (manaBalls != null && greens != null) {
@@ -220,7 +243,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < greys.size(); i++) {
             tempGrey = greys.get(i);
-            if (tempGrey.getX() == 0) {
+            if (tempGrey.getX() <= 0) {
                 removeGrey(tempGrey);
             }
             if (manaBalls != null && greys != null) {
@@ -231,7 +254,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < oranges.size(); i++) {
             tempOrange = oranges.get(i);
-            if (tempOrange.getX() == 0) {
+            if (tempOrange.getX() <= 0) {
                 removeOrange(tempOrange);
             }
             if (manaBalls != null && oranges != null) {
@@ -242,7 +265,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < pinks.size(); i++) {
             tempPink = pinks.get(i);
-            if (tempPink.getX() == 0) {
+            if (tempPink.getX() <= 0) {
                 removePink(tempPink);
             }
             if (manaBalls != null && pinks != null) {
@@ -253,7 +276,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < reds.size(); i++) {
             tempRed = reds.get(i);
-            if (tempRed.getX() == 0) {
+            if (tempRed.getX() <= 0) {
                 removeRed(tempRed);
             }
             if (manaBalls != null && reds != null) {
@@ -270,7 +293,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < robots.size(); i++) {
             tempRobot = robots.get(i);
-            if (tempRobot.getX() == 0) {
+            if (tempRobot.getX() <= 0) {
                 removeRobot(tempRobot);
             }
             if (manaBalls != null && robots != null) {
@@ -289,7 +312,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < yellows.size(); i++) {
             tempYellow = yellows.get(i);
-            if (tempYellow.getX() == 0) {
+            if (tempYellow.getX() <= 0) {
                 removeYellow(tempYellow);
             }
             if (manaBalls != null && yellows != null) {
@@ -305,6 +328,9 @@ public class Controller extends TimerTask {
 
             tempYellow.update();
         }
+
+
+
     }
 
     public boolean checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
@@ -425,7 +451,7 @@ public class Controller extends TimerTask {
                     }
                 }
     }
-    public void checkEnemyHit(Rectangle2D.Float hitbox, String enemyType) {
+    public void checkBatHit(Rectangle2D.Float hitbox, String enemyType) {
         if (enemyType.equals("bat")){
             for(Manaball mb : manaBalls)
                 for (Bat b : bats)
@@ -438,106 +464,6 @@ public class Controller extends TimerTask {
                             return;
                         }
                     }}
-//        if (enemyType.equals("bee")){
-//            for (Bee b : bees)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            bees.remove(b);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("blue")){
-//            for (Blue b : blues)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            blues.remove(b);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("green")){
-//            for (Green g : greens)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            greens.remove(g);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("grey")){
-//            for (Grey g : greys)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            greys.remove(g);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("orange")){
-//            for (Orange o : oranges)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            oranges.remove(o);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("pink")){
-//            for (Pink p : pinks)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            pinks.remove(p);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("red")){
-//            for (Red r : reds)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            reds.remove(r);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("robot")){
-//            for (Robot r : robots)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            robots.remove(r);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-//        if (enemyType.equals("yellow")){
-//            for (Yellow y : yellows)
-//                for(Manaball mb : manaBalls)
-//                    if (mb != null) {
-//
-//                        if (hitbox.intersects(mb.getHitbox())) {
-//                            yellows.remove(y);
-//                            manaBalls.remove(mb);
-//                            return;
-//                        }
-//                    }}
-
     }
 
     public void render(Graphics g) {
@@ -594,11 +520,6 @@ public class Controller extends TimerTask {
             tempHeart.render(g);
         }
 
-
-//        renderTick++;
-//        if (renderTick == 100) {
-//            renderTick = 0;
-//        }
     }
 
     public void addManaball(Manaball ball) {
@@ -640,70 +561,6 @@ public class Controller extends TimerTask {
     public void addHeart(Heart heart){ hearts.add(heart);}
     public void removeHeart(Heart heart){ hearts.remove(heart);}
 
-    public boolean isTouching(String enemy) {
-        if (enemy.equals("bat")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        } else if (enemy.equals("blue")){
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("green")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("grey")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("orange")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("pink")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("red")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("robot")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        else if (enemy.equals("yellow")) {
-            if ((int) tempBat.getY() == (int) tempManaball.getY()) {
-                return true;
-            } else if (tempManaball.getY() <= tempBat.getY() + 50 && tempManaball.getY() + 50 >= tempBat.getY()) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 
 }

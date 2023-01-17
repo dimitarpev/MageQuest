@@ -32,7 +32,7 @@ public class Game implements Runnable {
      private void initClasses() {
          background = new Background(0, 0, 696, 1920);
          player = new Player(150, 200, (int)(64 * SCALE), (int)(48 * SCALE) );
-         controller = new Controller();
+         controller = new Controller(player);
          score = new Score();
 
          //square = new Square(600, 200);
