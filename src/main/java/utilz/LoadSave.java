@@ -27,7 +27,7 @@ public class LoadSave {
     public static final String ENEMY_YELLOW = "enemies/yellow.png";
     public static final String ENEMY_ORANGE = "enemies/orange.png";
     public static final String ENEMY_SHOT = "enemies/enemyShot.png";
-    public static final String HEART = "Heart/heart.png";
+    public static final String HEART = "Heart/black_heart_2.png";
 
     public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;

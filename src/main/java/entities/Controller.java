@@ -41,9 +41,9 @@ public class Controller extends TimerTask {
     int renderTick = 0;
 
     public Controller() {
-//        for(int i=0; i<3;i++){
-//            addHeart(new Heart(150 + 32 * i,50,32,32));
-//        }
+        for(int i=0; i<3;i++){
+            addHeart(new Heart(3 + 32 * i,50,32,32));
+        }
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 int min = 0;
@@ -157,7 +157,6 @@ public class Controller extends TimerTask {
             }
             tempSpikeball.update();
         }
-
 
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
@@ -550,9 +549,6 @@ public class Controller extends TimerTask {
             tempSpikeball = spikeballs.get(i);
             tempSpikeball.render(g);
         }
-
-
-
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
             tempBat.render(g);
@@ -593,10 +589,10 @@ public class Controller extends TimerTask {
             tempYellow = yellows.get(i);
             tempYellow.render(g);
         }
-//        for (int i = 0; i < hearts.size(); i++) {
-//            tempHeart = hearts.get(i);
-//            tempHeart.render(g);
-//        }
+        for (int i = 0; i < hearts.size(); i++) {
+            tempHeart = hearts.get(i);
+            tempHeart.render(g);
+        }
 
 
 //        renderTick++;

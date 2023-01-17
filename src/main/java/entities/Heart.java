@@ -5,7 +5,7 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Heart extends Enemy{
+public class Heart extends Entity{
     BufferedImage image;
 
     public Heart(float x, float y, int height, int width) {

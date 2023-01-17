@@ -36,8 +36,6 @@ public class Game implements Runnable {
          score = new Score();
 
          //square = new Square(600, 200);
-
-
      }
 
      private void startGameLoop() {
@@ -57,7 +55,6 @@ public class Game implements Runnable {
         controller.render(g);
         //square.render(g);
         score.render(g);
-//        heart.render(g);
         //SCORE TEXT
 //        Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
 //        g.setFont(textFont);
@@ -104,7 +101,6 @@ public class Game implements Runnable {
                 updates = 0;
             }
         }
-
     }
 
      public Player getPlayer() {
@@ -116,7 +112,6 @@ public class Game implements Runnable {
      public Controller getController() {
         return controller;
     }
-
     public void windowFocusLost() {
         player.resetDirBoolean();
     }
