@@ -373,7 +373,7 @@ public class Controller extends TimerTask {
                     if (b.hitbox.intersects(mb.getHitbox())) {
                         bees.remove(b);
                         manaBalls.remove(mb);
-                        Score.currentScore += 1000;
+                        Score.currentScore += 10;
                         return true;
                     }
                 }
