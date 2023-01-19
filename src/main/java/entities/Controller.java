@@ -176,9 +176,16 @@ public class Controller extends TimerTask {
                     spikeballs.remove(tempSpikeball);
                     return;
                 }
-
-
             }
+
+            //IF SPIKEBALL AND MANABALL COLLIDE REMOVE BOTH
+            for (Manaball manaball : manaBalls){
+                if (tempSpikeball.hitbox.intersects(manaball.hitbox)){
+                    spikeballs.remove(tempSpikeball);
+                    manaBalls.remove(manaball);
+                }
+            }
+
 
             tempSpikeball.update();
         }
@@ -191,6 +198,7 @@ public class Controller extends TimerTask {
                 removeBat(tempBat);
                 player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
                 removeHeart(hearts.get(player.getLivesOfPlayer()));
+
             }
             if (manaBalls != null && bats != null) {
                 checkBatHit(tempBat.getHitbox(), "bat");
