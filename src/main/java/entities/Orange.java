@@ -9,6 +9,7 @@ public class Orange extends Enemy {
 
     BufferedImage image;
     float speed = 1.0f;
+    int orangeHealth = 2;
     public Orange(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
@@ -35,5 +36,8 @@ public class Orange extends Enemy {
     public float getX() {
         return x;
     }
+
+    public int getOrangeHealth(){return orangeHealth;}
+    public void setOrangeHealth(int orangeHealth){this.orangeHealth = orangeHealth;}
 
 }

@@ -33,6 +33,7 @@ public class Playing extends State implements Statemethods{
         player.update();
         controller.update();
 
+
     }
 
     @Override

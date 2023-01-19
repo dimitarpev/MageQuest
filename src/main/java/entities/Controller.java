@@ -373,7 +373,7 @@ public class Controller extends TimerTask {
                     if (b.hitbox.intersects(mb.getHitbox())) {
                         bees.remove(b);
                         manaBalls.remove(mb);
-                        Score.currentScore += 10;
+                        Score.currentScore += 1000;
                         return true;
                     }
                 }
@@ -385,9 +385,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (b.hitbox.intersects(mb.getHitbox())) {
-                        blues.remove(b);
+                        b.blueHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        if (b.blueHealth <= 0) {
+                            blues.remove(b);
+                            Score.currentScore += 20;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -398,9 +402,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (g.hitbox.intersects(mb.getHitbox())) {
-                        greens.remove(g);
+                        g.greenHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 30;
+                        if (g.greenHealth <= 0) {
+                            greens.remove(g);
+                            Score.currentScore += 30;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -411,9 +419,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (g.hitbox.intersects(mb.getHitbox())) {
-                        greys.remove(g);
+                        g.greyHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 10;
+                        if (g.greyHealth <= 0) {
+                            greys.remove(g);
+                            Score.currentScore += 10;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -424,9 +436,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (o.hitbox.intersects(mb.getHitbox())) {
-                        oranges.remove(o);
+                        o.orangeHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 20;
+                        if (o.orangeHealth <= 0) {
+                            oranges.remove(o);
+                            Score.currentScore += 20;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -437,9 +453,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (p.hitbox.intersects(mb.getHitbox())) {
-                        pinks.remove(p);
+                        p.pinkHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 10;
+                        if (p.pinkHealth <= 0) {
+                            pinks.remove(p);
+                            Score.currentScore += 10;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -450,9 +470,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (r.hitbox.intersects(mb.getHitbox())) {
-                        reds.remove(r);
+                        r.redHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 30;
+                        if (r.redHealth <= 0) {
+                            reds.remove(r);
+                            Score.currentScore += 30;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -463,9 +487,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (r.hitbox.intersects(mb.getHitbox())) {
-                        robots.remove(r);
+                        r.robotHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 40;
+                        if (r.robotHealth <= 0) {
+                            robots.remove(r);
+                            Score.currentScore += 40;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -476,9 +504,13 @@ public class Controller extends TimerTask {
                 if (mb != null) {
 
                     if (y.hitbox.intersects(mb.getHitbox())) {
-                        yellows.remove(y);
+                        y.yellowHealth -= 1;
                         manaBalls.remove(mb);
-                        Score.currentScore += 30;
+                        if (y.yellowHealth <= 0) {
+                            yellows.remove(y);
+                            Score.currentScore += 30;
+                            return;
+                        }
                         return;
                     }
                 }
@@ -490,12 +522,17 @@ public class Controller extends TimerTask {
                     if (mb != null) {
 
                         if (b.hitbox.intersects(mb.getHitbox())) {
-                            bats.remove(b);
+                            b.batHealth -= 1;
                             manaBalls.remove(mb);
-                            Score.currentScore += 20;
+                            if (b.batHealth <= 0) {
+                                bats.remove(b);
+                                Score.currentScore += 20;
+                                return;
+                            }
                             return;
                         }
-                    }}
+                    }
+        }
     }
 
     public void render(Graphics g) {

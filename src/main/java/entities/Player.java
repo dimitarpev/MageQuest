@@ -4,7 +4,6 @@ import inputs.KeyboardInputs;
 import main.Game;
 import main.GamePanel;
 import utilz.LoadSave;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -119,7 +118,6 @@ public class Player extends Entity{
         updatePos();
         updateAnimationTick();
         setAnimation();
-
 
     }
 

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 public class Blue extends Enemy{
     BufferedImage image;
     float speed = 1.0f;
+    int blueHealth = 2;
 
     public Blue(float x, float y, int height, int width) {
         super(x, y, height, width);
@@ -33,5 +34,8 @@ public class Blue extends Enemy{
     }
 
     public float getX() {return x;}
+
+    public int getBlueHealth(){return blueHealth;}
+    public void setBlueHealth(int blueHealth){this.blueHealth = blueHealth;}
 
 }

@@ -11,7 +11,7 @@ public class Bat extends Enemy{
 
     BufferedImage image;
     float speed = 1.0f;
-
+    int batHealth = 2;
     public Bat(float x, float y, int height, int width) {
         super(x, y, height, width);
         assignImage();
@@ -27,6 +27,7 @@ public class Bat extends Enemy{
     public void update() {
         x -= speed;
         hitbox.x -= speed;
+
     }
 
     public void render(Graphics g) {
@@ -41,6 +42,9 @@ public class Bat extends Enemy{
     public float getY() {
         return y;
     }
+
+    public int getBatHealth(){return batHealth;}
+    public void setBatHealth(int batHealth){this.batHealth = batHealth;}
 
 
 }

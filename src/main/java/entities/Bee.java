@@ -9,6 +9,7 @@ public class Bee extends Enemy {
 
     BufferedImage image;
     float speed = 1.2f;
+    int beeHealth = 1;
 
 
     public Bee(float x, float y, int height, int width) {
@@ -41,4 +42,7 @@ public class Bee extends Enemy {
     public float getY() {
         return y;
     }
+
+    public int getBeeHealth(){return beeHealth;}
+    public void setBeeHealth(int beeHealth){this.beeHealth = beeHealth;}
 }
