@@ -1,5 +1,7 @@
 package entities;
 
+import gamestates.Gamestate;
+
 import javax.swing.text.TabStop;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -52,6 +54,7 @@ public class Controller extends TimerTask {
         //Enemy Spawning System
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
+                if(Gamestate.state == Gamestate.PLAYING){
                 int min = 0;
                 int max = 0;
                 if (Score.currentScore == 0){
@@ -110,31 +113,31 @@ public class Controller extends TimerTask {
                     int randomX = (int)Math.floor(Math.random() * (maxXValue - minXValue + 1) + minXValue);
                     int randomY = (int)Math.floor(Math.random() * (maxYValue - minYValue + 1) + minYValue);
                     addYellow(new Yellow(randomX, randomY, 64, 64));}
-                }
+                }}
 
         };
         Timer timer = new Timer("Timer");
         if(Score.currentScore < 200){
             long min = 1000L;
-            long max = 3000L;
+            long max = 1500L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
         if(Score.currentScore > 200 && Score.currentScore < 1000){
-            long min = 1000L;
-            long max = 3000L;
+            long min = 1500L;
+            long max = 2000L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
         if(Score.currentScore > 1000 && Score.currentScore < 5000){
-            long min = 1000L;
-            long max = 3000L;
+            long min = 2000L;
+            long max = 2500L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
         if(Score.currentScore > 5000){
-            long min = 1000L;
-            long max = 3000L;
+            long min = 2500L;
+            long max = 3500L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
@@ -154,7 +157,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < manaBalls.size(); i++) {
             tempManaball = manaBalls.get(i);
-            if (tempManaball.getX() > 1920) {
+            if (tempManaball.getX() > 1550) {
                 removeManaball(tempManaball);
             }
             tempManaball.update();
@@ -184,8 +187,10 @@ public class Controller extends TimerTask {
         for (int i = 0; i < bats.size(); i++) {
             tempBat = bats.get(i);
 
-            if (tempBat.getX() <= 0) {
+            if (tempBat.getX() <= 230) {
                 removeBat(tempBat);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && bats != null) {
                 checkBatHit(tempBat.getHitbox(), "bat");
@@ -195,8 +200,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < bees.size(); i++) {
             tempBee = bees.get(i);
-            if (tempBee.getX() <= 0) {
+            if (tempBee.getX() <= 230) {
                 removeBee(tempBee);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
 
             if (manaBalls != null && bees != null && checkBeeHit(tempBee.getHitbox(), "bee") ) {
@@ -215,8 +222,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < blues.size(); i++) {
             tempBlue = blues.get(i);
-            if (tempBlue.getX() <= 0) {
+            if (tempBlue.getX() <= 230) {
                 removeBlue(tempBlue);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && blues != null) {
                 checkBlueHit(tempBlue.getHitbox(), "blue");
@@ -226,8 +235,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < greens.size(); i++) {
             tempGreen = greens.get(i);
-            if (tempGreen.getX() <= 0) {
+            if (tempGreen.getX() <= 230) {
                 removeGreen(tempGreen);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && greens != null) {
                 checkGreenHit(tempGreen.getHitbox(), "green");
@@ -243,8 +254,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < greys.size(); i++) {
             tempGrey = greys.get(i);
-            if (tempGrey.getX() <= 0) {
+            if (tempGrey.getX() <= 230) {
                 removeGrey(tempGrey);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && greys != null) {
                 checkGreyHit(tempGrey.getHitbox(), "grey");
@@ -254,8 +267,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < oranges.size(); i++) {
             tempOrange = oranges.get(i);
-            if (tempOrange.getX() <= 0) {
+            if (tempOrange.getX() <= 230) {
                 removeOrange(tempOrange);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && oranges != null) {
                 checkOrangeHit(tempOrange.getHitbox(), "orange");
@@ -265,8 +280,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < pinks.size(); i++) {
             tempPink = pinks.get(i);
-            if (tempPink.getX() <= 0) {
+            if (tempPink.getX() <= 230) {
                 removePink(tempPink);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && pinks != null) {
                 checkPinkHit(tempPink.getHitbox(), "pink");
@@ -276,8 +293,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < reds.size(); i++) {
             tempRed = reds.get(i);
-            if (tempRed.getX() <= 0) {
+            if (tempRed.getX() <= 230) {
                 removeRed(tempRed);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && reds != null) {
                 checkRedHit(tempRed.getHitbox(), "red");
@@ -293,8 +312,10 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < robots.size(); i++) {
             tempRobot = robots.get(i);
-            if (tempRobot.getX() <= 0) {
+            if (tempRobot.getX() <= 230) {
                 removeRobot(tempRobot);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
             }
             if (manaBalls != null && robots != null) {
                 checkRobotHit(tempRobot.getHitbox(), "robot");
@@ -312,8 +333,11 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < yellows.size(); i++) {
             tempYellow = yellows.get(i);
-            if (tempYellow.getX() <= 0) {
+            if (tempYellow.getX() <= 230) {
                 removeYellow(tempYellow);
+                player.setLivesOfPlayer(player.getLivesOfPlayer() - 1);
+                removeHeart(hearts.get(player.getLivesOfPlayer()));
+
             }
             if (manaBalls != null && yellows != null) {
                 checkYellowHit(tempYellow.getHitbox(), "yellow");

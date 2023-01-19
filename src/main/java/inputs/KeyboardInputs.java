@@ -1,6 +1,7 @@
 package inputs;
 
 import entities.Manaball;
+import gamestates.Gamestate;
 import main.GamePanel;
 import entities.Entity;
 import entities.Player;
@@ -31,16 +32,26 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_W -> gamePanel.getGame().getPlayer().setUp(true);
-            case KeyEvent.VK_S -> gamePanel.getGame().getPlayer().setDown(true);
-            case KeyEvent.VK_SPACE -> {
-                if (gamePanel.getGame().getPlayer().CANSHOOT) {
-                    gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue() + 30, gamePanel.getGame().getPlayer().getyValue() - 30, 128, 128));
-                    gamePanel.getGame().getPlayer().setCANSHOOT(canShoot);
-                }
-            }
+        switch(Gamestate.state){
+            case MENU :
+                gamePanel.getGame().getMenu().keyPressed(e);
+                break;
+            case PLAYING:
+                gamePanel.getGame().getMenu().keyPressed(e);
+                break;
+            default:
+                break;
         }
+//        switch (e.getKeyCode()) {
+//            case KeyEvent.VK_W -> gamePanel.getGame().getPlayer().setUp(true);
+//            case KeyEvent.VK_S -> gamePanel.getGame().getPlayer().setDown(true);
+//            case KeyEvent.VK_SPACE -> {
+//                if (gamePanel.getGame().getPlayer().CANSHOOT) {
+//                    gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue() + 30, gamePanel.getGame().getPlayer().getyValue() - 30, 128, 128));
+//                    gamePanel.getGame().getPlayer().setCANSHOOT(canShoot);
+//                }
+//            }
+//        }
 //        if (e.getKeyCode() == KeyEvent.VK_SPACE && canShoot){
 //            gamePanel.getGame().getController().addManaball(new Manaball(gamePanel.getGame().getPlayer().getxValue() + 30, gamePanel.getGame().getPlayer().getyValue() - 30, 128, 128));
 //
@@ -55,13 +66,23 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch(e.getKeyCode()){
-            case KeyEvent.VK_W:
-                gamePanel.getGame().getPlayer().setUp(false);
-            case KeyEvent.VK_S:
-                gamePanel.getGame().getPlayer().setDown(false);
+        switch (Gamestate.state){
+            case MENU :
+                gamePanel.getGame().getMenu().keyReleased(e);
+                break;
+            case PLAYING:
+                gamePanel.getGame().getMenu().keyReleased(e);
+                break;
+            default:
                 break;
         }
+//        switch(e.getKeyCode()){
+//            case KeyEvent.VK_W:
+//                gamePanel.getGame().getPlayer().setUp(false);
+//            case KeyEvent.VK_S:
+//                gamePanel.getGame().getPlayer().setDown(false);
+//                break;
+//        }
 
 
     }
