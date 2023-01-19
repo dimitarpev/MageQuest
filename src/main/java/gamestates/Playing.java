@@ -26,7 +26,6 @@ public class Playing extends State implements Statemethods{
         player = new Player(150, 200, (int)(64 * Game.SCALE), (int)(48 * Game.SCALE) );
         controller = new Controller(player);
         score = new Score();
-
     }
 
     @Override
