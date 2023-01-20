@@ -19,7 +19,7 @@ public class Game implements Runnable {
     private Menu menu;
     private Background background;
     private Controller controller;
-//    private Player player;
+
     private Score score;
     private Heart heart;
 

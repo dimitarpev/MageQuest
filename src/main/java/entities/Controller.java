@@ -164,7 +164,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < spikeballs.size(); i++) {
             tempSpikeball = spikeballs.get(i);
-            if (tempSpikeball.getX() == 0) {
+            if (tempSpikeball.getX() <= 0) {
                 removeSpikeball(tempSpikeball);
             }
 
