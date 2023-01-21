@@ -123,19 +123,19 @@ public class Controller extends TimerTask {
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore > 200 && Score.currentScore < 1000){
+        if(Score.currentScore >= 200 && Score.currentScore < 1000){
             long min = 1500L;
             long max = 2000L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore > 1000 && Score.currentScore < 5000){
+        if(Score.currentScore >= 1000 && Score.currentScore < 5000){
             long min = 2000L;
             long max = 2500L;
             long delay = min + (long) (Math.random() * (max - min));
             long period = min + (long) (Math.random() * (max - min));
             timer.scheduleAtFixedRate(repeatedTask, delay, period);}
-        if(Score.currentScore > 5000){
+        if(Score.currentScore >= 5000){
             long min = 2500L;
             long max = 3500L;
             long delay = min + (long) (Math.random() * (max - min));
@@ -164,7 +164,7 @@ public class Controller extends TimerTask {
         }
         for (int i = 0; i < spikeballs.size(); i++) {
             tempSpikeball = spikeballs.get(i);
-            if (tempSpikeball.getX() == 0) {
+            if (tempSpikeball.getX() <= 0) {
                 removeSpikeball(tempSpikeball);
             }
 

@@ -24,6 +24,9 @@ public class Red extends Enemy{
     public void render(Graphics g) {
         g.drawImage(image, (int) x , (int) y, width, height, null);
         drawHitbox(g);
+
+        //DISPLAY ENEMY HP
+        displayEnemyHP(g, redHealth);
     }
 
     @Override

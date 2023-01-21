@@ -4,8 +4,11 @@ import entities.*;
 import main.Game;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+
+import static java.awt.event.MouseEvent.*;
 
 
 public class Playing extends State implements Statemethods{
@@ -74,8 +77,17 @@ public class Playing extends State implements Statemethods{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON2) {
-            controller.addManaball(new Manaball(player.getxValue(), player.getyValue(), 64, 64));
+//        if (e.getButton() == MouseEvent.BUTTON2) {
+//            controller.addManaball(new Manaball(player.getxValue(), player.getyValue(), 64, 64));
+//        }
+
+        switch (e.getButton()) {
+            case BUTTON1 -> {
+                if (player.CANSHOOT) {
+                    controller.addManaball(new Manaball(player.getxValue() + 30, player.getyValue() - 30, 128, 128));
+                    player.setCANSHOOT(canShoot);
+                }
+            }
         }
     }
 

@@ -29,7 +29,7 @@ public class Player extends Entity{
     private boolean moving = false;
     private boolean up, down;
     public boolean CANSHOOT = true;
-    int ticker = 0;
+    float ticker = 0f;
     private float playerSpeed = 2.0f;
     private float xDrawOffset = 24 * Game.SCALE;
     private float yDrawOffset = 20 * Game.SCALE;
@@ -147,8 +147,8 @@ public class Player extends Entity{
 //            if (!CANSHOOT) {
 //                aniIndex = 0;
 //            }
-            ticker++;
-            if (ticker == 2) {
+            ticker+= 0.5f;
+            if (ticker == 1) {
                 CANSHOOT = true;
                 ticker = 0;
             }

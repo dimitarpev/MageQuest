@@ -27,6 +27,8 @@ public class Bee extends Enemy {
     public void render(Graphics g) {
         g.drawImage(image, (int) x , (int) y, width, height, null);
         drawHitbox(g);
+
+        displayEnemyHP(g, beeHealth);
     }
 
     @Override
