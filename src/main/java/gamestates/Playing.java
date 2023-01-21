@@ -47,8 +47,6 @@ public class Playing extends State implements Statemethods{
         score.render(g);
     }
 
-
-    @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W -> player.setUp(true);
@@ -90,6 +88,22 @@ public class Playing extends State implements Statemethods{
             }
         }
     }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
 
     public void windowFocusLost() {
         player.resetDirBoolean();
