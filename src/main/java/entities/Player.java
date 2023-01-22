@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static utilz.Constants.Directions.*;
 import static utilz.Constants.Directions.DOWN;
@@ -30,6 +32,7 @@ public class Player extends Entity{
     private boolean up, down;
     public boolean CANSHOOT = true;
     float ticker = 0f;
+    int ticker2 = 0;
     private float playerSpeed = 2.0f;
     private float xDrawOffset = 24 * Game.SCALE;
     private float yDrawOffset = 20 * Game.SCALE;
@@ -118,8 +121,28 @@ public class Player extends Entity{
         updatePos();
         updateAnimationTick();
         setAnimation();
+        //shotCooldown();
 
     }
+
+//    public void shotCooldown() {
+//        if (!CANSHOOT) {
+//            TimerTask repeatedTask = new TimerTask() {
+//                public void run() {
+//                    CANSHOOT = true;
+//                }
+//            };
+//            Timer timer = new Timer("Timer");
+//
+//            long delay = 2000L;
+//            long period = 2000L;
+////            if (CANSHOOT)
+////                timer.purge();
+//
+//            timer.scheduleAtFixedRate(repeatedTask, delay, period);
+//
+//        }
+//    }
 
     private void setAnimation() {
         int startAni = playerAction;
@@ -144,11 +167,14 @@ public class Player extends Entity{
         if (aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex++;
+//            if (!CANSHOOT){
+//                shotCooldown();
+//            }
 //            if (!CANSHOOT) {
 //                aniIndex = 0;
 //            }
             ticker+= 0.5f;
-            if (ticker == 1) {
+            if (ticker == 1f) {
                 CANSHOOT = true;
                 ticker = 0;
             }

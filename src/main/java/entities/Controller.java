@@ -179,12 +179,12 @@ public class Controller extends TimerTask {
             }
 
             //IF SPIKEBALL AND MANABALL COLLIDE REMOVE BOTH
-            for (Manaball manaball : manaBalls){
-                if (tempSpikeball.hitbox.intersects(manaball.hitbox)){
-                    spikeballs.remove(tempSpikeball);
-                    manaBalls.remove(manaball);
-                }
-            }
+//            for (Manaball manaball : manaBalls){
+//                if (tempSpikeball.hitbox.intersects(manaball.hitbox)){
+//                    spikeballs.remove(tempSpikeball);
+//                    manaBalls.remove(manaball);
+//                }
+//            }
 
 
             tempSpikeball.update();

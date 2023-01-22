@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static java.awt.event.MouseEvent.*;
 
@@ -35,8 +37,6 @@ public class Playing extends State implements Statemethods{
     public void update() {
         player.update();
         controller.update();
-
-
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Playing extends State implements Statemethods{
             case KeyEvent.VK_W -> player.setUp(true);
             case KeyEvent.VK_S -> player.setDown(true);
             case KeyEvent.VK_SPACE -> {
-                if (player.CANSHOOT) {
+                if (player.getCANSHOOT()) {
                     controller.addManaball(new Manaball(player.getxValue() + 30, player.getyValue() - 30, 128, 128));
                     player.setCANSHOOT(canShoot);
                 }
@@ -61,6 +61,7 @@ public class Playing extends State implements Statemethods{
         }
 
     }
+
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -79,14 +80,14 @@ public class Playing extends State implements Statemethods{
 //            controller.addManaball(new Manaball(player.getxValue(), player.getyValue(), 64, 64));
 //        }
 
-        switch (e.getButton()) {
-            case BUTTON1 -> {
-                if (player.CANSHOOT) {
-                    controller.addManaball(new Manaball(player.getxValue() + 30, player.getyValue() - 30, 128, 128));
-                    player.setCANSHOOT(canShoot);
-                }
-            }
-        }
+//        switch (e.getButton()) {
+//            case BUTTON1 -> {
+//                if (player.CANSHOOT) {
+//                    controller.addManaball(new Manaball(player.getxValue() + 30, player.getyValue() - 30, 128, 128));
+//                    player.setCANSHOOT(canShoot);
+//                }
+//            }
+//        }
     }
 
     @Override
