@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Score {
 
-    public static int currentScore = 3000;
+    public static int currentScore = 0;
 
     public Score() {
 

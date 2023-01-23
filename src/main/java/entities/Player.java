@@ -147,7 +147,7 @@ public class Player extends Entity{
     private void setAnimation() {
         int startAni = playerAction;
 
-        if (moving)
+        if(moving)
             playerAction = IDLE;
         else
             playerAction = IDLE;
