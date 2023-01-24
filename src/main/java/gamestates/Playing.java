@@ -2,6 +2,7 @@ package gamestates;
 
 import entities.*;
 import main.Game;
+import ui.GameOverOverlay;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -17,10 +18,12 @@ public class Playing extends State implements Statemethods{
 
     private Player player;
     private Manaball manaball;
+    private GameOverOverlay gameOverOverlay;
     private Score score;
     private Controller controller;
     boolean canShoot = false;
     private Background background;
+    private boolean gameOver;
 
     public Playing(Game game) {
         super(game);
@@ -28,15 +31,22 @@ public class Playing extends State implements Statemethods{
     }
     private void initClasses() {
         background = new Background(0, 0, 696, 1920);
-        player = new Player(150, 200, (int)(64 * Game.SCALE), (int)(48 * Game.SCALE) );
+        player = new Player(150, 200, (int)(64 * Game.SCALE), (int)(48 * Game.SCALE), this );
         controller = new Controller(player);
         score = new Score();
+        gameOverOverlay = new GameOverOverlay(this);
     }
 
     @Override
     public void update() {
-        player.update();
-        controller.update();
+        if (!gameOver) {
+            player.update();
+            controller.update();
+        } else {
+            Score.currentScore = 0;
+            player.livesOfPlayer = 3;
+
+        }
     }
 
     @Override
@@ -45,9 +55,25 @@ public class Playing extends State implements Statemethods{
         player.render(g);
         controller.render(g);
         score.render(g);
+
+        if (gameOver){
+            gameOverOverlay.draw(g);
+        }
+    }
+
+    public void resetAll(){
+
+    }
+
+    public void setGameOver(boolean gameOver){
+        this.gameOver = gameOver;
     }
 
     public void keyPressed(KeyEvent e) {
+        if (gameOver)
+            gameOverOverlay.keyPressed(e);
+
+        else
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W -> player.setUp(true);
             case KeyEvent.VK_S -> player.setDown(true);

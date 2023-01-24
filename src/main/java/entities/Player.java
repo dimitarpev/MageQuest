@@ -1,18 +1,12 @@
 package entities;
 
-import inputs.KeyboardInputs;
+import gamestates.Playing;
 import main.Game;
-import main.GamePanel;
 import utilz.LoadSave;
-import javax.imageio.ImageIO;
+import  ui.GameOverOverlay;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import static utilz.Constants.Directions.*;
-import static utilz.Constants.Directions.DOWN;
 import static utilz.Constants.PlayerConstants.*;
 
 
@@ -31,6 +25,9 @@ public class Player extends Entity{
     private boolean moving = false;
     private boolean up, down;
     public boolean CANSHOOT = true;
+    private Playing playing;
+    private boolean gameOver;
+
     float ticker = 0f;
     int ticker2 = 0;
     private float playerSpeed = 2.0f;
@@ -38,9 +35,10 @@ public class Player extends Entity{
     private float yDrawOffset = 20 * Game.SCALE;
 
 
-    public Player(float x, float y , int width, int height) {
+    public Player(float x, float y , int width, int height, Playing playing) {
 
         super(x, y, width, height);
+        this.playing = playing;
         loadAnimations();
         setDefaultValues();
         getPlayerImage();
@@ -117,6 +115,11 @@ public class Player extends Entity{
     }
 
     public void update() {
+
+        if(livesOfPlayer <= 0){
+            playing.setGameOver(true);
+            return;
+        }
         //character movement with grid jumps
         updatePos();
         updateAnimationTick();
