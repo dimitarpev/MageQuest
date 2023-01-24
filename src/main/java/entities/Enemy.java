@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Enemy extends Entity{
-
+    //ENEMY CLASS LINKED TO ALL ENEMIES
     BufferedImage heartImage;
     public Enemy(float x, float y, int height, int width) {
         super(x, y, height, width);
@@ -17,6 +17,7 @@ public abstract class Enemy extends Entity{
 
     }
 
+    //ENEMY HP DISPLAY SYSTEM
     public void displayEnemyHP(Graphics g, int hp){
         if (hp == 4) {
             g.drawImage(heartImage, (int)x + 30, (int)y + 60, 10, 10, null);

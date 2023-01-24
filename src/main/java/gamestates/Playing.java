@@ -15,7 +15,7 @@ import static java.awt.event.MouseEvent.*;
 
 
 public class Playing extends State implements Statemethods{
-
+    //CLASS RUNNING WHEN GAME IN PLAYING STATE
     private Player player;
     private Manaball manaball;
     private GameOverOverlay gameOverOverlay;
@@ -29,6 +29,8 @@ public class Playing extends State implements Statemethods{
         super(game);
         initClasses();
     }
+
+    //INITIALISE ALL CLASSES USED IN THE GAME
     private void initClasses() {
         background = new Background(0, 0, 696, 1920);
         player = new Player(150, 200, (int)(64 * Game.SCALE), (int)(48 * Game.SCALE), this );
@@ -38,6 +40,7 @@ public class Playing extends State implements Statemethods{
     }
 
     @Override
+    //UPDATE CLASSES
     public void update() {
         if (!gameOver) {
             player.update();
@@ -50,6 +53,7 @@ public class Playing extends State implements Statemethods{
     }
 
     @Override
+    //RENDER CLASSES
     public void render(Graphics g) {
         background.render(g);
         player.render(g);
@@ -69,6 +73,7 @@ public class Playing extends State implements Statemethods{
         this.gameOver = gameOver;
     }
 
+    //PLAYER KEYBOARD AND MOUSE INPUTS
     public void keyPressed(KeyEvent e) {
         if (gameOver)
             gameOverOverlay.keyPressed(e);

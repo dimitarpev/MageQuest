@@ -12,6 +12,7 @@ import java.util.TimerTask;
 
 public class Controller extends TimerTask {
 
+    //STORE ALL IN LINKED LISTS(ENEMIES, WEAPON SHOTS, HEARTS)
     private LinkedList<Manaball> manaBalls = new LinkedList<Manaball>();
     private LinkedList<Spikeball> spikeballs = new LinkedList<>();
     private LinkedList<Bat> bats = new LinkedList<>();
@@ -25,7 +26,7 @@ public class Controller extends TimerTask {
     private LinkedList<Robot> robots = new LinkedList<>();
     private LinkedList<Yellow> yellows = new LinkedList<>();
     private LinkedList<Heart> hearts = new LinkedList<>();
-
+    //TEMPORARY OBJECTS FOR IRRITATION OVER THEM
     Manaball tempManaball;
     Spikeball tempSpikeball;
     Bat tempBat;
@@ -57,6 +58,7 @@ public class Controller extends TimerTask {
                 if(Gamestate.state == Gamestate.PLAYING){
                 int min = 0;
                 int max = 0;
+                //DETERIME WHICH ENEMIES SPAWN DEPENDING ON SCORE
                 if (Score.currentScore == 0){
                     max = 0;
                 } else if (Score.currentScore < 200) {
@@ -117,6 +119,7 @@ public class Controller extends TimerTask {
 
         };
         Timer timer = new Timer("Timer");
+        //DIFFERENT LEVELS(SCORES) SPAWNING TIME
         if(Score.currentScore < 200){
             long min = 1000L;
             long max = 1500L;
@@ -149,6 +152,7 @@ public class Controller extends TimerTask {
     public void run() {}
 
     public void update() {
+        //UPDATE ALL/ CHECKS FOR COLLISION/ LIFE DECREASE / ENEMY SHOOTING
         for (int i = 0; i < hearts.size(); i++) {
             tempHeart = hearts.get(i);
 
@@ -365,6 +369,7 @@ public class Controller extends TimerTask {
 
     }
 
+    //CHECK IF ENEMIES HIT BY PLAYER
     public boolean checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
         for(Manaball mb : manaBalls)
             for (Bee b : bees)
@@ -535,6 +540,7 @@ public class Controller extends TimerTask {
         }
     }
 
+    //RENDER ALL
     public void render(Graphics g) {
         for (int i = 0; i < manaBalls.size(); i++) {
             tempManaball = manaBalls.get(i);
@@ -591,6 +597,8 @@ public class Controller extends TimerTask {
 
     }
 
+
+    //ADD AND REMOVE SHOT BALLS
     public void addManaball(Manaball ball) {
         manaBalls.add(ball);
     }
@@ -627,6 +635,7 @@ public class Controller extends TimerTask {
     public void removeRobot(Robot robot) {robots.remove(robot);}
     public void addYellow(Yellow yellow) {yellows.add(yellow);}
     public void removeYellow(Yellow yellow) {yellows.remove(yellow);}
+    //ADD AND REMOVE HEART
     public void addHeart(Heart heart){ hearts.add(heart);}
     public void removeHeart(Heart heart){ hearts.remove(heart);}
 

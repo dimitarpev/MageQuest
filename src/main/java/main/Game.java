@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class Game implements Runnable {
 
-
+    //LOAD MAIN GAME AND THE STATE CLASSES
     private GameWindow gameWindow;
     private GamePanel gamePanel;
     private Thread gameThread;
@@ -80,11 +80,6 @@ public class Game implements Runnable {
                 break;
         }
 
-        //SCORE TEXT
-//        Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
-//        g.setFont(textFont);
-//        g.setColor(Color.CYAN);
-//        g.drawString("SCORE", 10, 30);
 
     }
 

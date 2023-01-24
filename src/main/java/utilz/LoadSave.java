@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class LoadSave {
+    //LOAD IMAGES CLASS USED TO LOAD ALL IMAGES IN THE GAME
 
     //public static final String IDLE_PLAYER_ATLAS = "wizard/idleSprite.png";
     public static final String IDLE_PLAYER_ATLAS = "wizard/idleTest.png";

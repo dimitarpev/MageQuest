@@ -3,7 +3,7 @@ package utilz;
 import main.Game;
 
 public class Constants {
-
+    //ALL GLOABL FINAL CONSTANTS USED IN THE GAME
     public static class UI{
         public static class Buttons{
             public static final int B_WITH_DEFAULT = 140;

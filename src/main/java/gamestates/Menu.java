@@ -23,7 +23,7 @@ import java.io.InputStream;
 
 
 public class Menu extends State implements Statemethods{
-
+    //MAIN MENU CLASS
     private MenuButton[] buttons = new MenuButton[2];
     private BufferedImage img;
     private BufferedImage[] animations;
@@ -62,17 +62,20 @@ public class Menu extends State implements Statemethods{
             animations[i] = img.getSubimage(i * 190,0,190,160);
         }
     }
+
+    //LOAD GAME TITLE DISPLAY
     private void loadGameName(){
         gameNameImg = LoadSave.GetSpriteAtlas(LoadSave.GAME_NAME);
     }
 
+    //LOAD BACKGROUND OF MAIN MENU
     private void loadBackground() {
         backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
 
 
     }
 
-
+    //LOAD BUTTONS
     private void loadButtons() {
         buttons[0] = new MenuButton( 1920/ 2,(int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
 //        buttons[1] = new MenuButton(1920/ 2,(int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);

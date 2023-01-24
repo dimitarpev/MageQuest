@@ -16,6 +16,7 @@ import java.io.InputStream;
 import static utilz.Constants.Directions.*;
 
 public class GamePanel extends JPanel {
+    //PANEL OF THE GAME
     private Game game;
     private MouseInputs mouseInputs;
     private BufferedImage img;

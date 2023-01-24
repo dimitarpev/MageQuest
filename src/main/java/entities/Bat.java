@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 public class Bat extends Enemy{
 
-
+    //ENEMY BAT CLASS - LEVEL 2 ENEMY
     BufferedImage image;
     float speed = 1.0f;
     int batHealth = 2;

@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Spikeball extends Entity{
-
+    //ENEMY SHOTS CLASS
     BufferedImage image;
     float attackSpeed = 1.5f;
     private float xDrawOffset = 50 * Game.SCALE;
@@ -24,6 +24,7 @@ public class Spikeball extends Entity{
     }
 
     public void update() {
+        //MOVE ENEMY SHOTS TOWARDS PLAYER
         x -= attackSpeed;
         hitbox.x -= attackSpeed;
     }

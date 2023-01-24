@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Heart extends Entity{
+    //HEART IMAGE CLASS USED FOR PLAYER AND ENEMY HP
     BufferedImage image;
 
     public Heart(float x, float y, int height, int width) {

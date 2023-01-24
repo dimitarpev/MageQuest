@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import static utilz.Constants.EnemyConstants.*;
 
 public class EnemyManager {
+    //PREVIOUS TEST CLASS CURRENTLY NOT USED FOR ENEMY FUNCTIONALITY
     private Game game;
     private ArrayList<Square> squares = new ArrayList<>();
 

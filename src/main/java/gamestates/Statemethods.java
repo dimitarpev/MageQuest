@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public interface Statemethods {
+    //INTERFACE FOR ALL MAIN METHODS
     public void update();
     public void render(Graphics g);
     public void keyPressed(KeyEvent e);

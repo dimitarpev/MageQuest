@@ -3,7 +3,7 @@ package entities;
 import java.awt.*;
 
 public class Score {
-
+    //PLAYER'S SCORE CLASS
     public static int currentScore = 0;
 
     public Score() {
@@ -11,6 +11,7 @@ public class Score {
     }
 
     public void render(Graphics g) {
+        //DRAW SCORE AND CHANGE COLOR DEPENDING ON ITS VALUE
         Font textFont = new Font("ROMAN_BASELINE", Font.BOLD, 18);
         g.setFont(textFont);
         if (currentScore < 200)
@@ -23,6 +24,10 @@ public class Score {
             g.setColor(Color.BLACK);
         }
         g.drawString("SCORE: " + currentScore , 10, 30);
+
+        //DRAW TUTORIAL MESSAGES
+        if (currentScore < 20) {
+        g.drawString("PRESS SPACE TO SHOOT!", 500, 10);}
 //        g.drawString(Integer.toString(currentScore), 80, 30 );
     }
 

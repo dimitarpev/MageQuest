@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Manaball extends Entity{
-
+    //PLAYER SHOTS CLASS
     BufferedImage image;
     int attackSpeed = 3;
     private float xDrawOffset = 50 * Game.SCALE;
@@ -24,6 +24,7 @@ public class Manaball extends Entity{
     }
 
     public void update() {
+        //MOVES MANABALL TOWARDS ENEMIES DEPENDING ON attackSpeed var
         x += attackSpeed;
         hitbox.x += attackSpeed;
     }

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Orange extends Enemy {
-
+    //ENEMY ORANGE CLASS - LEVEL 2 ENEMY
     BufferedImage image;
     float speed = 1.0f;
     int orangeHealth = 2;

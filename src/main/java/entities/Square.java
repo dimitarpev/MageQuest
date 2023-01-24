@@ -6,6 +6,7 @@ import java.awt.geom.Rectangle2D;
 import static utilz.Constants.EnemyConstants.*;
 
 public class Square extends Enemy{
+    //TEST CLASS FOR THE ENEMY CREATION /NOT USED IN FINAL GAME/
     public Square(float x, float y) {
         super(x, y, SQUARE_HEIGHT, SQUARE_WIDTH);
         initHitbox(x, y, width, height);

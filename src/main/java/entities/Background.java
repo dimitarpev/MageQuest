@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Background extends Entity{
-
+    //BACKGROUND OF THE GAME
     private BufferedImage img;
     public Background(float x, float y, int height, int width) {
         super(x, y, height, width);
@@ -17,6 +17,7 @@ public class Background extends Entity{
         importImg();
     }
 
+    //IMPORT BACKGROUND IMAGE
     private void importImg() {
 //        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND_IMAGE);
         InputStream is = getClass().getResourceAsStream("/vecteezy_alien-planet-game-background_6316482_608/vecteezy_alien-planet-game-background_6316482.jpg");
@@ -29,6 +30,7 @@ public class Background extends Entity{
 
     }
 
+    //RENDER BACKGROUND IMAGE
     public void render(Graphics g) {
         g.drawImage(img, (int)x, (int)y, width, height, null);
     }

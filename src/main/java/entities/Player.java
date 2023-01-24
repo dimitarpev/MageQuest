@@ -11,9 +11,7 @@ import static utilz.Constants.PlayerConstants.*;
 
 
 public class Player extends Entity{
-
-
-
+    //MAIN PLAYER CLASS
     private BufferedImage[][] animations;
     BufferedImage imgs;
     private int aniTick, aniIndex, aniSpeed = 50;
@@ -48,6 +46,7 @@ public class Player extends Entity{
 
 
 
+    //LOAD PLAYER ANIMATIONS FROM SPRITE (SPRITE CURRENTLY NOT PROPER)
     private void loadAnimations() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 
@@ -95,7 +94,7 @@ public class Player extends Entity{
 
 
     private void updatePos() {
-
+        //UPDATE POSITION (MOVING) OF THE PLAYER
         moving = false;
 
         if((up && !down) && y > 0){
@@ -115,19 +114,19 @@ public class Player extends Entity{
     }
 
     public void update() {
-
+        //UPDATE WHOLE PLAYER AND ENDS GAME IF PLAYER DIES
         if(livesOfPlayer <= 0){
             playing.setGameOver(true);
             return;
         }
-        //character movement with grid jumps
+
         updatePos();
         updateAnimationTick();
         setAnimation();
         //shotCooldown();
 
     }
-
+//  TEST FOR PLAYER SHOT COOLDOWN FOR FUTURE USES
 //    public void shotCooldown() {
 //        if (!CANSHOOT) {
 //            TimerTask repeatedTask = new TimerTask() {
@@ -147,6 +146,7 @@ public class Player extends Entity{
 //        }
 //    }
 
+    //SET PLAYER'S ANIMATION DEPENDING ON THE ACTION (GET NUMBERS FROM CONSTANTS CLASS)
     private void setAnimation() {
         int startAni = playerAction;
 
@@ -176,6 +176,7 @@ public class Player extends Entity{
 //            if (!CANSHOOT) {
 //                aniIndex = 0;
 //            }
+            //CURRENTLY USED ENEMY SHOT COOLDOWN METHOD (NOT FLEXIBLE AND WITH SOME SHOTS NOT DETECTING)
             ticker+= 0.5f;
             if (ticker == 1f) {
                 CANSHOOT = true;

@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import static utilz.Constants.UI.Buttons.*;
 
 public class MenuButton {
+    //BUTTONS FOR MAIN MENU
 private int xOffsetCenter = B_WIDTH / 2;
     private int xPos, yPos, rowIndex, index;
     private Gamestate state;

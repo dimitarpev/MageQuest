@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Robot extends Enemy{
+    //ENEMY ROBOT CLASS - LEVEL 4 ENEMY
     BufferedImage image;
     float speed = 0.5f;
     int robotHealth = 4;

@@ -13,7 +13,7 @@ import static utilz.Constants.UI.Buttons.B_HEIGHT;
 import static utilz.Constants.UI.Buttons.B_WIDTH;
 
 public class GameOverOverlay {
-
+    //GAME OVER OVERLAY
     private Playing playing;
     private BufferedImage img;
     private int imgX, imgY, imgW, imgH;

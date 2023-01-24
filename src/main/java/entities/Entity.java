@@ -18,6 +18,7 @@ public abstract class Entity {
         this.width = width;
     }
 
+    //DRAWS THE HITBOX OF ALL ENTITIES WHEN UNCOMMENTED
     protected void drawHitbox(Graphics g) {
         //g.setColor(Color.pink);
         //g.drawRect((int)hitbox.x, (int) hitbox.y,(int) hitbox.width,(int) hitbox.height);
