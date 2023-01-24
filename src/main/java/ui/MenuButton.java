@@ -73,4 +73,5 @@ private int xOffsetCenter = B_WIDTH / 2;
         mouseOver = false;
         mousePressed = false;
     }
+
 }
