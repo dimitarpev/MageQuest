@@ -14,6 +14,8 @@ public class GameOverOverlay {
 
     }
 
+    //Menu
+
     public void draw(Graphics g){
         g.setColor(new Color(0, 0, 0, 200));
         g.fillRect(0, 0, 1920, 696);
