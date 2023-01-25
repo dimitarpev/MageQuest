@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="MageQuest:jar">
-    <output-path>$USER_HOME$/Documents/Project IT in the game/Executable</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/MageQuest_jar</output-path>
     <root id="archive" name="MageQuest.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="MageQuest" />
     </root>
