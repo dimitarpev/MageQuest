@@ -33,7 +33,7 @@ public class LoadSave {
     public static final String ENEMY_SHOT = "enemies/enemyShot.png";
     public static final String HEART = "Heart/black_heart_2.png";
     public static final String MENU_BUTTONS = "menu/button_atlas.png";
-    public static final String DEATH_SCREEN = "Menu/New_Death_Screen_Menu.png";
+    public static final String DEATH_SCREEN = "menu/New_Death_Screen_Menu.png";
     public static final String DEATH_BUTTONS = "menu/new_button_atlas.png";
 
 
