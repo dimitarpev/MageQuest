@@ -48,6 +48,7 @@ public class GameOverOverlay {
 
         g.drawImage(img, imgX, imgY, imgH, imgW, null);
         g.setColor(Color.WHITE);
+        g.drawString("Final Score: " + Score.currentScore, 710, 410);
         g.drawString("PRESS ESCAPE TO RETURN TO THE MAIN MENU", 550, 480);
 
     }

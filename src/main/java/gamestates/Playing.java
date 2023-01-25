@@ -45,11 +45,12 @@ public class Playing extends State implements Statemethods{
         if (!gameOver) {
             player.update();
             controller.update();
-        } else {
-            Score.currentScore = 0;
-            player.livesOfPlayer = 3;
-
         }
+//        else {
+//            Score.currentScore = 0;
+//            player.livesOfPlayer = 3;
+//
+//        }
     }
 
     @Override
