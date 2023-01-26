@@ -77,9 +77,9 @@ public class Menu extends State implements Statemethods{
 
     //LOAD BUTTONS
     private void loadButtons() {
-        buttons[0] = new MenuButton( 1920/ 2,(int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
+        buttons[0] = new MenuButton( 1920/ 2 - 150,(int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
 //        buttons[1] = new MenuButton(1920/ 2,(int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
-        buttons[1] = new MenuButton(1920/ 2,(int) (220 * Game.SCALE) , 2, Gamestate.QUIT);
+        buttons[1] = new MenuButton(1920/ 2 - 150,(int) (220 * Game.SCALE) , 2, Gamestate.QUIT);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Menu extends State implements Statemethods{
     public void render(Graphics g) {
         g.drawImage(backgroundImg,menuX, menuY, 1920, 700, null );
 //        g.drawImage(animations[aniIndex], 100, (int)(696/2 * Game.SCALE), 700,300,null);
-        g.drawImage(gameNameImg,720 , 150, 500,100, null);
+        g.drawImage(gameNameImg,570 , 150, 500,100, null);
         for(MenuButton mb : buttons)
             mb.render(g);
     }
