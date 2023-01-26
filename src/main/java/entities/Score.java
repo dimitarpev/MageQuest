@@ -27,8 +27,21 @@ public class Score {
 
         //DRAW TUTORIAL MESSAGES
         if (currentScore < 20) {
-        g.drawString("PRESS SPACE TO SHOOT!", 500, 10);}
+            Font tutFont = new Font(Font.DIALOG_INPUT, Font.BOLD, 18);
+            g.setFont(tutFont);
+            g.setColor(Color.RED);
+            g.drawString("PRESS SPACE TO SHOOT AND W/S TO MOVE UP/DOWN!", 500, 30);}
 //        g.drawString(Integer.toString(currentScore), 80, 30 );
+        else if (currentScore >= 200 && currentScore <= 220) {
+            g.setColor(Color.orange);
+            g.drawString("LEVEL 2 ENEMIES INCOMING!", 600, 30);
+        } else if (currentScore >= 1000 && currentScore <= 1030) {
+            g.setColor(Color.red);
+            g.drawString("LEVEL 3 ENEMIES INCOMING!", 600, 30);
+        } else if (currentScore >= 5000 && currentScore <= 5040) {
+            g.setColor(Color.BLACK);
+            g.drawString("LEVEL 4 ENEMIES INCOMING!", 600, 30);
+        }
     }
 
     public void update() {
