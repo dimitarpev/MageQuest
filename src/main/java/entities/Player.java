@@ -192,6 +192,14 @@ public class Player extends Entity{
             }
         }
     }
+    public void resetAll() {
+        resetDirBoolean();
+        moving = false;
+        playerAction = IDLE;
+        livesOfPlayer = 3;
+        hitbox.x = x;
+        hitbox.y = y;
+    }
 
     public float getxValue() {
         return xValue;

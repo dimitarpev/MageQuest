@@ -67,7 +67,14 @@ public class Playing extends State implements Statemethods{
     }
 
     public void resetAll(){
-
+        gameOver = false;
+        Score.currentScore = 0;
+        player.resetAll();
+        controller.resetAllEnemies();
+        //controller.resetAllEnemies();
+        for(int i=0; i < player.livesOfPlayer;i++){
+            controller.addHeart(new Heart(3 + 32 * i,50,32,32));
+        }
     }
 
     public void setGameOver(boolean gameOver){

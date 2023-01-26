@@ -368,6 +368,13 @@ public class Controller extends TimerTask {
 
 
     }
+    public void resetAllEnemies() {
+        bees.clear();
+        bats.clear();
+        blues.clear();
+        pinks.clear();
+        greys.clear();
+    }
 
     //CHECK IF ENEMIES HIT BY PLAYER
     public boolean checkBeeHit(Rectangle2D.Float hitbox, String enemyType) {
