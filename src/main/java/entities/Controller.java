@@ -369,11 +369,18 @@ public class Controller extends TimerTask {
 
     }
     public void resetAllEnemies() {
-        bees.clear();
         bats.clear();
+        bees.clear();
         blues.clear();
-        pinks.clear();
+        greens.clear();
         greys.clear();
+        manaBalls.clear();
+        oranges.clear();
+        pinks.clear();
+        reds.clear();
+        robots.clear();
+        spikeballs.clear();
+        yellows.clear();
     }
 
     //CHECK IF ENEMIES HIT BY PLAYER
